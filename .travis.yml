@@ -1,0 +1,25 @@
+language: ruby
+
+install:
+  - bundle install
+
+script:
+  # Execute the hugo build
+  - bundle exec jekyll algolia
+
+branches:
+  # I chose to build all branches aside from the master branch
+  except:
+    - master
+
+deploy:
+  provider: pages
+  skip-cleanup: true
+  # This is my GitHub personal access token that is added as an encrypted key on Travis
+  github-token: $GITHUB_TOKEN
+  # This tells Travis to deploy the output of the public directory to my master branch
+  local-dir: _site
+  target-branch: master
+  on:
+    # This will execute the deploy process only on the source branch
+    branch: source

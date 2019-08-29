@@ -1,0 +1,17 @@
+<header class="site-header">
+  <div class="header-container container">
+    <h1 class="logo"><a href="{{ site.url }}">{{ site.title }}</a></h1>
+    <nav class="site-menu">
+      {% assign pages = site.pages | where: "menu", "main" | sort: "order" %}
+      {% for p in pages  %}
+        <a class="nav-item{% if p.url == page.url %} active{% endif %}" href="{{ p.url }}" title="{{ p.title }}">{{ p.title }}</a>
+      {% endfor %}
+      <a class="nav-item" href="{{ site.url }}/feed.xml">订阅</a>
+    </nav>
+    <div class="header-search">
+      <form action="/search">
+        <input name="query" class="form-control header-search-input search-input" type="search" placeholder="搜索文章" />
+      </form>
+    </div>
+  </div>
+</header>

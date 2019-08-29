@@ -1,0 +1,30 @@
+---
+layout: default
+---
+<div class="container single-post">
+  <article>
+  <h1 class="page-title">{{ page.title }}</h1>
+  <div class="page-content" id="page-content">{{ content }}</div>
+  </article>
+  <aside class="meta">
+    <div class="date-tags">
+      <section class="date">
+        <span>发表于:</span>
+        <a href="{{site.url}}/{{page.date | date: '%Y'}}">{{ page.date | date: "%Y-%m-%d %H:%M" }}</a>
+      </section>
+      <div class="tags">
+        标签: {% for tag in page.tags %}<a href="/tags/{{tag | slugify}}">{{ tag }}</a>{% endfor %}
+      </div>
+    </div>
+    <div class="post-nav">
+      {% if page.previous %}
+      <a class="prev" href="{{page.previous.url}}">{{page.previous.title}}</a>
+      {% endif %}
+      {% if page.next %}
+      <a class="next" href="{{page.next.url}}">{{page.next.title}}</a>
+      {% endif %}
+    </div>
+  </aside>
+  {% include disqus.html %}
+</div>
+<script src="{{ '/assets/js/anchor.js' | relative_url }}"></script>

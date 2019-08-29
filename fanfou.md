@@ -1,0 +1,32 @@
+---
+title: "饭否"
+date: 2019-08-10T10:52:34+08:00
+menu: "main"
+layout: page
+slug: /fanfou
+order: 3
+---
+
+<div id="ffstatuses_list" class="ffstatuses-list"></div>
+<a href="https://fanfou.com/housne">更多...</a>
+
+<script>
+  (function() {
+    window.ffstatuses = window.ffstatuses || function(list) {
+      const html = `
+        <ul>
+          ${list.map(renderStatus).join('')}
+        </ul>
+      `;
+      document.getElementById('ffstatuses_list').innerHTML = html;
+    }
+    function renderStatus(status) {
+      return `
+        <li>${status.text}<time>${timeago.format(status.created_at, 'zh_CN')}</time></li>
+      `
+    }
+  })();
+</script>
+<script src="https://cdn.jsdelivr.net/npm/timeago.js@4.0.0-beta.2/dist/timeago.min.js"></script>
+<script src="https://api.fanfou.com/statuses/user_timeline/housne.json?cb=ffstatuses&count=20" async></script>
+
