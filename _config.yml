@@ -20,7 +20,7 @@
 
 title: Harry
 description: >- # this means to ignore newlines until "baseurl:"
-  Normal blog focus on frontend, javascript, react. Interested in Angular, Python, Django, Typescript 
+  A normal blog focus on frontend, Javascript, react. Interested in Angular, Python, Django, Typescript 
   and body workouts
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://goharry.dev" # the base hostname & protocol for your site, e.g. http://example.com
