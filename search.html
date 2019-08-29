@@ -12,3 +12,8 @@ sitemap: false
 <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@3.4.0/dist/instantsearch.production.min.js" integrity="sha256-pM0n88cBFRHpSn0N26ETsQdwpA7WAXJDvkHeCLh3ujI=" crossorigin="anonymous"></script>
 
 <script src="{{ '/assets/js/search.js' | relative_url }}"></script>
+<script>
+  {% assign algolia = site.algolia %}
+  var search = GH.search('{{algolia.application_id}}', '{{algolia.search_key}}', '{{algolia.index_name}}');
+  search.start();
+</script>

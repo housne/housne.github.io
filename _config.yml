@@ -75,4 +75,5 @@ jekyll-archives:
 
 algolia:
   application_id: 'W35Y3WRWT5'
-  index_name: 'blog'
+  index_name: 'goharry.dev'
+  search_key: '26f88718e0d1687ce92bdb56155aedc2'
