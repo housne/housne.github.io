@@ -72,3 +72,6 @@ jekyll-archives:
     year: '/:year/'
     tag: '/tags/:name/'
     category: '/categories/:name/'
+
+algolia:
+  application_id: 'W35Y3WRWT5'
