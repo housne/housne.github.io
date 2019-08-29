@@ -9,6 +9,7 @@ install:
 script:
   # Execute the hugo build
   - bundle exec jekyll build
+  - bundle exec jekyll algolia
 
 branches:
   # I chose to build all branches aside from the master branch
