@@ -1,26 +1,23 @@
 ---
 title: redis docker
 date: 2016-04-04T17:25:59+08:00
-path: /redis-docker
 tags:
-- docker
-- redis
-
-topics:
-- backend
+  - docker
+  - redis
+layout: post
 ---
 
 Redis is an open source key-value store that functions as a data structure server.<!--more-->
 
 下载镜像:
 
-```shell
+```bash
 docker pull redis
 ```
 
 启动 redis 实例:
 
-```shell
+```bash
 docker run --name some-redis -d redis
 ```
 

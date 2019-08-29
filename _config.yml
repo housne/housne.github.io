@@ -38,9 +38,9 @@ plugins:
   - jekyll-seo-tag
 
 paginate: 5
-paginate_path: /page/:num
+paginate_path: /page/:num/
 
-permalink: /:year/:month/:slug
+permalink: /:year/:month/:slug/
 
 # Exclude from processing.
 # The following items will not be processed, by default.

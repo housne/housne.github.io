@@ -3,7 +3,7 @@ title: "饭否"
 date: 2019-08-10T10:52:34+08:00
 menu: "main"
 layout: page
-slug: /fanfou
+slug: /fanfou/
 order: 3
 ---
 

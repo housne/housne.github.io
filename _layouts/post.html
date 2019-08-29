@@ -10,10 +10,10 @@ layout: default
     <div class="date-tags">
       <section class="date">
         <span>发表于:</span>
-        <a href="{{site.url}}/{{page.date | date: '%Y'}}">{{ page.date | date: "%Y-%m-%d %H:%M" }}</a>
+        <a href="{{site.url}}/{{page.date | date: '%Y'}}/">{{ page.date | date: "%Y-%m-%d %H:%M" }}</a>
       </section>
       <div class="tags">
-        标签: {% for tag in page.tags %}<a href="/tags/{{tag | slugify}}">{{ tag }}</a>{% endfor %}
+        标签: {% for tag in page.tags %}<a href="/tags/{{tag | slugify}}/">{{ tag }}</a>{% endfor %}
       </div>
     </div>
     <div class="post-nav">
