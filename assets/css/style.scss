@@ -47,6 +47,53 @@ input, textarea, input[type=text], input[type=search] {
   padding-right: 1rem;
 }
 
+.form-control, .ais-SearchBox-input {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  height: calc(1.5em + .75rem + 2px);
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border: solid 1px var(--border-color);
+  border-radius: .25rem;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  &:focus {
+    border-color: #80bdff;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+  }
+  margin-bottom: 1rem;
+}
+
+textarea.form-control {
+  height: auto;
+}
+
+.btn {
+  display: inline-block;
+  font-weight: 400;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: 0.25rem;
+  padding: .375rem .75rem;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  background: var(--bg-light);
+  border: 1px solid var(--bg-light);
+  cursor: pointer;
+  &:hover {
+    background: #0069d9;
+    border-color: #0069d9;
+    color: #fff;
+  }
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 0.2rem rgba(38,143,255,.3);
+  }
+}
+
 @import "header";
 @import "search";
 
@@ -232,9 +279,10 @@ input, textarea, input[type=text], input[type=search] {
 }
 
 .pagination {
-  display: flex;
+  display: inline-flex;
   list-style: none;
   border-radius: 0.25rem;
+  box-shadow: 0 1px 1px 0 rgba(85, 95, 110, 0.1);
   .page-link {
     border: 1px solid #dee2e6;
     padding: .5rem .75rem;
