@@ -75,3 +75,4 @@ jekyll-archives:
 
 algolia:
   application_id: 'W35Y3WRWT5'
+  index_name: 'blog'
