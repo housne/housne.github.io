@@ -66,8 +66,8 @@
             .map(
               item =>
                 `<article class="post">
-                  <h1 class="title"><a href="${item.permalink}">${instantsearch.highlight({ attribute: 'title', hit: item })}</a></h1>
-                  <div class="summary">${item.summary}</div>
+                  <h1 class="title"><a href="${item.url}">${instantsearch.highlight({ attribute: 'title', hit: item })}</a></h1>
+                  <div class="summary">${item.excerpt_html}</div>
                 </article>`
             )
             .join('')}
