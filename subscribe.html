@@ -1,0 +1,54 @@
+---
+slug: /subscribe/
+layout: page
+title: 订阅
+menu: main
+order: 9
+---
+
+<p>通过以下两种方式订阅，及时获取更新内容</p>
+<h2>通过 RSS 订阅</h2>
+{% assign feed_url = site.url | append: '/feed.xml' %}
+<p>通过各种 RSS 阅读器订阅，推荐使用 <a href="https://feedly.com/i/subscription/feed/{{feed_url}}">feedly</a>、<a href="https://www.inoreader.com/?add_feed={{feed_url}}">Inoreader</a> 或者复制 RSS 地址</p>
+<div class="feed-copy">
+  <span class="url-text">{{feed_url}}</span>
+  <button class="feed-copy-btn" id="copy_button" data-url="{{feed_url}}">复制</button>
+</div>
+<h2>通过邮件订阅</h2>
+<p>在发表新文章时发送通知邮件</p>
+<form action="https://goharry.us17.list-manage.com/subscribe/post?u=7109d7a05d51fe334fa8a7bd3&amp;id=fd5589471a" method="post" target="_blank">
+  <input type="email" name="EMAIL" class="form-control" required placeholder="输入订阅邮箱地址">
+  <button class="btn" type="submit">订阅</button>
+</form>
+<script>
+  (function() {
+    function copyToClipboard(text) {
+      if (window.clipboardData && window.clipboardData.setData) {
+        return clipboardData.setData("Text", text); 
+      } else if (document.queryCommandSupported && document.queryCommandSupported("copy")) {
+        var textarea = document.createElement("textarea");
+        textarea.textContent = text;
+        textarea.style.position = "fixed";
+        document.body.appendChild(textarea);
+        textarea.select();
+        try {
+          return document.execCommand("copy"); 
+        } catch (ex) {
+          console.warn("Copy to clipboard failed.", ex);
+          return false;
+        } finally {
+          document.body.removeChild(textarea);
+        }
+      }
+    }
+    document.getElementById('copy_button').addEventListener('click', function(e) {
+      const copyResults = copyToClipboard(e.target.dataset.url);
+      if (!copyResults) {
+        window.alert("复制失败，请手动复制");
+      } else {
+        e.target.innerText = "已复制";
+        setTimeout(() => (e.target.innerText = '复制'), 3000);
+      }
+    })
+  })()
+</script>

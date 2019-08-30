@@ -14,8 +14,7 @@ order: 0
 
 ## 第三方服务
 
-邮件订阅服务由 [mailchimp](https://mailchimp.com/) 提供
-
-评论由 [Disqus](https://disqus.com/) 提供。
-
-统计由 [Google Analytics](https://analytics.google.com/) 提供
+- 邮件订阅服务由 [mailchimp](https://mailchimp.com/) 提供
+- 评论由 [Disqus](https://disqus.com/) 提供。
+- 统计由 [Google Analytics](https://analytics.google.com/) 提供
+- 搜索由 [algolia](https://www.algolia.com) 提供
