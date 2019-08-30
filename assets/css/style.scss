@@ -394,3 +394,37 @@ textarea.form-control {
 }
 
 @import "syntax";
+
+.share-buttons {
+  display: flex;
+  padding: 1rem 0 0;
+  a {
+    display: block;
+    width: 1.2rem;
+    height: 1.2rem;
+    margin-right: 1rem;
+    color: #999;
+    transition: transform 0.3s;
+    svg {
+      fill: currentcolor;
+    }
+    &.twitter-icon {
+      color: rgb(73, 160, 235);
+    }
+    &.facebook-icon {
+      color: rgb(73, 103, 173);
+    }
+    &.linkedin-icon {
+      color: rgb(64, 114, 172);
+    }
+    &.weibo-icon {
+      color: rgb(209, 57, 51);
+    }
+    &.qzone-icon {
+      color: rgb(247, 207, 70);
+    }
+    &:hover {
+      transform: scale(1.2)
+    }
+  }
+}
