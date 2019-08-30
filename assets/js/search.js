@@ -86,6 +86,16 @@
           showPrevious: true,
         })
       );
+      
+      // add loading
+      search.addWidget({
+        render: ({ searchMetadata = {} }) => {
+          const { isSearchStalled } = searchMetadata;
+      
+          document.getElementById('search_loading').innerHTML = isSearchStalled ? 'loading' : '';
+        },
+      });
+
       return search;
     }
   }
