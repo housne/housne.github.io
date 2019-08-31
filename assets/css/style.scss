@@ -99,6 +99,7 @@ textarea.form-control {
 
 
 .post-list {
+  padding-top: 0.5rem;
   .post {
     margin: 1.5rem 0;
     border-bottom: solid 1px var(--border-color);
@@ -370,6 +371,7 @@ textarea.form-control {
 .archive-page-title {
   border-bottom: solid 1px var(--border-color);
   padding-bottom: 1rem;
+  margin-bottom: 0;
 }
 
 .feed-copy {
