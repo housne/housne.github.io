@@ -6,6 +6,7 @@
   text{
     dominant-baseline: hanging;
     font: 1.3rem Verdana, Helvetica, Arial, sans-serif;
+    font-weight: bold;
   }
 ]]></style>
 </svg>
