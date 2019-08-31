@@ -3,19 +3,19 @@ layout: default
 sitemap: false
 slug: /search/
 ---
-<div class="container single-post">
+<div class="container">
   <div class="search-form" id="search-form"></div>
   <div id="powered-by" class="search-powered-by"></div>
   <div class="search-results" id="search-results">
+      <div class="search-result-placeholder">搜索中</div>
   </div>
-  <div class="search-loading" id="search_loading"></div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/algoliasearch@3.33.0/dist/algoliasearchLite.min.js" integrity="sha256-3Laj91VXexjTlFLgL8+vvIq27laXdRmFIcO2miulgEs=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@3.4.0/dist/instantsearch.production.min.js" integrity="sha256-pM0n88cBFRHpSn0N26ETsQdwpA7WAXJDvkHeCLh3ujI=" crossorigin="anonymous"></script>
 
 <script src="{{ '/assets/js/search.js' | relative_url }}"></script>
+{% assign algolia = site.algolia %}
 <script>
-  {% assign algolia = site.algolia %}
   var search = GH.search('{{algolia.application_id}}', '{{algolia.search_key}}', '{{algolia.index_name}}');
   search.start();
 </script>

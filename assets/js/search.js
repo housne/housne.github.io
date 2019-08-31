@@ -51,6 +51,8 @@
             showMore();
           });
 
+          widgetParams.container.innerHTML = '';
+
           widgetParams.container.appendChild(previousButton);
           widgetParams.container.appendChild(ul);
           widgetParams.container.appendChild(nextButton);
@@ -60,6 +62,13 @@
 
         widgetParams.container.querySelector('.previous-button').style.display = isFirstPage ? 'none' : 'block';
         widgetParams.container.querySelector('.next-button').style.display = isLastPage ? 'none' : 'block';
+
+        if (!hits.length) {
+          widgetParams.container.querySelector('.post-list').innerHTML = `
+            <div class="search-result-placeholder">暂无结果</div>
+          `;
+          return;
+        }
 
         widgetParams.container.querySelector('.post-list').innerHTML = `
           ${hits
@@ -88,13 +97,13 @@
       );
       
       // add loading
-      search.addWidget({
-        render: ({ searchMetadata = {} }) => {
-          const { isSearchStalled } = searchMetadata;
+      // search.addWidget({
+      //   render: ({ searchMetadata = {} }) => {
+      //     const { isSearchStalled } = searchMetadata;
       
-          document.getElementById('search_loading').innerHTML = isSearchStalled ? 'loading' : '';
-        },
-      });
+      //     document.getElementById('search_loading').innerHTML = isSearchStalled ? 'loading' : '';
+      //   },
+      // });
 
       return search;
     }
