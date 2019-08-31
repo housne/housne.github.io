@@ -29,6 +29,7 @@ github_username:  housne
 
 # Build settings
 theme: minima
+
 plugins:
   - jekyll-feed
   - jekyll-paginate
@@ -84,3 +85,20 @@ algolia:
     - fanfou.html
     - subscribe.html
     - qrcode.html
+
+jekyll_compose:
+  post_default_front_matter:
+    layout: post
+    tags:
+    categories:
+  draft_default_front_matter:
+    layout: page
+
+socials:
+  twitter: https://twitter.com/_goharry
+  github: https://github.com/housne
+  facebook: https://facebook.com/housne
+  weibo: https://weibo.com/housne
+  fanfou: https://fanfou.com/housne
+  telegram: https://t.me/housne
+  instagram: https://instagram.com/housne

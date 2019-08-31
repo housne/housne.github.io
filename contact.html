@@ -7,6 +7,20 @@ menu: "main"
 order: 2
 ---
 
+<p>可以通过以下社交平台联系</p>
+
+<div class="social-links">
+  {% for provider in site.socials %}
+    {% assign name = provider[0] %}
+    {% assign svg = 'svg/' | append: name | append: '.svg' %}
+    <a href="{{provider[1]}}" class="social-icon {{name}}-icon">
+      {% include {{ svg }} %}
+    </a>
+  {% endfor %}
+</div>
+
+<h2>通过表单联系</h2>
+
 <form action="https://submit-form.com/kkEtjNAhVF5xsroQMA7Tv" target="_self" method="POST" id="contact_form">
     <input type="text" class="form-control" name="name" placeholder="称呼">
     <input type="email" class="form-control" name="email" placeholder="邮箱">

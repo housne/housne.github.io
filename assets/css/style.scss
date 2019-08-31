@@ -403,31 +403,59 @@ textarea.form-control {
     width: 1.2rem;
     height: 1.2rem;
     margin-right: 1rem;
-    color: #999;
     transition: transform 0.3s;
     svg {
       fill: currentcolor;
     }
-    &.twitter-icon {
-      color: rgb(73, 160, 235);
-    }
-    &.facebook-icon {
-      color: rgb(73, 103, 173);
-    }
-    &.linkedin-icon {
-      color: rgb(64, 114, 172);
-    }
-    &.weibo-icon {
-      color: rgb(209, 57, 51);
-    }
-    &.qzone-icon {
-      color: rgb(247, 207, 70);
-    }
-    &.wechat-icon {
-      color: rgb(79, 169, 56);
-    }
     &:hover {
       transform: scale(1.2)
     }
+  }
+}
+
+.social-icon {
+  svg {
+    fill: currentcolor;
+  }
+}
+
+.twitter-icon {
+  color: rgb(73, 160, 235);
+}
+.facebook-icon {
+  color: rgb(73, 103, 173);
+}
+.linkedin-icon {
+  color: rgb(64, 114, 172);
+}
+.weibo-icon {
+  color: rgb(209, 57, 51);
+}
+.qzone-icon {
+  color: rgb(247, 207, 70);
+}
+.wechat-icon {
+  color: rgb(79, 169, 56);
+}
+.github-icon {
+  color: rgb(23, 21, 21);
+}
+.instagram-icon {
+  color: rgb(38, 38, 38);
+}
+.telegram-icon {
+  color: rgb(78, 164, 225);
+}
+.fanfou-icon {
+  color: rgb(88, 202, 250);
+  padding-top: 5px;
+}
+
+.social-links {
+  display: flex;
+  .social-icon {
+    height: 1.6rem;
+    width: 1.6rem;
+    margin-right: 1rem;
   }
 }

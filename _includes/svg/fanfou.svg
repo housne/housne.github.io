@@ -1,0 +1,11 @@
+<svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<text dx="0">
+  饭
+</text>
+<style><![CDATA[
+  text{
+    dominant-baseline: hanging;
+    font: 1.3rem Verdana, Helvetica, Arial, sans-serif;
+  }
+]]></style>
+</svg>
