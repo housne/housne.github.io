@@ -22,12 +22,12 @@ sitemap: false
   <body>
     <div class="qrcode-container" >
       <h1 style="font-size: 1.4rem;padding-top: 1rem;">页面二维码</h1>
-      <div style="background: #fff; margin: 2rem auto; width: 164px;">
-        <canvas id="qrcode_canvas"></canvas>
+      <div style="background: #fff; margin: 2rem auto; width: 260px;padding: 1rem;">
+        <div id="qrcode_canvas"></div>
       </div>
       <span style="display: inline-block; padding: 0.5rem 1rem; background: #232323; border-radius: 20px; box-shadow: inset 0 5px 10px -5px #191919, 0 1px 0 0 #444;">使用微信扫一扫访问分享</span>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.4.1/build/qrcode.min.js" integrity="sha256-mwsMliyK97mRWE7ymumBhoy7g7/shXXYvfDLJCOfoGM=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs2@0.0.2/qrcode.min.js" integrity="sha256-xUHvBjJ4hahBW8qN9gceFBibSFUzbe9PNttUvehITzY=" crossorigin="anonymous"></script>
     <script>
       (function() {
         const query = new URLSearchParams(window.location.search);
@@ -37,10 +37,10 @@ sitemap: false
           window.close();
           return;
         }
-        QRCode.toCanvas(document.getElementById('qrcode_canvas'), url, function(err) {
-          if (err) {
-            console.log(err);
-          }
+        new QRCode(document.getElementById('qrcode_canvas'), {
+          text: url,
+          height: 260,
+          width: 260
         })
       })()
     </script>
