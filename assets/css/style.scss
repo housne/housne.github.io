@@ -397,9 +397,21 @@ textarea.form-control {
 
 @import "syntax";
 
+.share-component {
+  display: flex;
+  align-items: center;
+}
+
 .share-buttons {
   display: flex;
-  padding: 1rem 0 0;
+  padding-left: 1rem;
+  visibility: hidden;
+  opacity: 0;
+  transform: all .3s;
+  &.active {
+    visibility: visible;
+    opacity: 1;
+  }
   a {
     display: block;
     width: 1.2rem;
@@ -465,4 +477,20 @@ textarea.form-control {
   text-align: center;
   padding: 5rem 0;
   color: #999;
+}
+
+.share-action-button {
+  display: inline-flex;
+  align-items: center;
+}
+
+.share-action-icon {
+  svg {
+    width: 1rem;
+    fill: currentColor;
+  }
+  display: inline;
+  line-height: 1;
+  
+  margin-right: 0.5rem;
 }
