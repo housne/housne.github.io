@@ -28,4 +28,5 @@ layout: default
   </aside>
   {% include disqus.html %}
 </div>
-<script src="{{ '/assets/js/anchor.js' | relative_url }}"></script>
+{% assign build_time_param = site.time | date: '%s' | prepend: '?v=' %}
+<script src="{{ '/assets/js/anchor.js' | relative_url | append: build_time_param }}"></script>
