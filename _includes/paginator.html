@@ -6,15 +6,22 @@
     <span class="page-link disabled">上一页</span>
   {% endif %}
 
-  {% for page in (1..paginator.total_pages) %}
-    {% if page == paginator.page %}
-      <span class="page-link current">{{ page }}</span>
-    {% elsif page == 1 %}
-      <a class="page-link" href="{{ paginator.previous_page_path | relative_url }}">{{ page }}</a>
+  {% if paginator.page > 4 %}
+    <a href="{{ paginator.first_page_path | relative_url }}" class="page-link">首页</a>
+  {% endif %}
+
+  {% for trail in paginator.page_trail) %}
+    {% if page.url == trail.path %}
+      <span class="page-link current">{{ trail.num }}</span>
     {% else %}
-      <a class="page-link" href="{{ site.paginate_path | relative_url | replace: ':num', page }}">{{ page }}</a>
+      <a class="page-link" href="{{ trail.path | replace: 'index.html', '' }}" title="{{trail.title}}">{{ trail.num }}</a>
     {% endif %}
   {% endfor %}
+
+  {% assign gap = paginator.total_pages | minus: paginator.page %}
+  {% if gap >= 4  %}
+    <a href="{{ paginator.last_page_path | relative_url }}" class="page-link">尾页</a>
+  {% endif %}
 
   {% if paginator.next_page %}
     <a class="page-link" href="{{ paginator.next_page_path | relative_url }}">下一页</a>

@@ -1,5 +1,7 @@
 ---
 layout: default
+pagination:
+  enabled: true
 ---
 <div class="container">
   <h1 class="archive-page-title">
@@ -10,18 +12,19 @@ layout: default
     {% endif %}
   </h1>
   <div class="post-list">
-    {% for post in page.posts %}
+    {% for post in paginator.posts %}
     <article class="post">
       <h1 class="title">
         <a href="{{ post.url }}">{{ post.title }}</a>
       </h1>
-      <time class="datetime" datetime="{{post.date}}">{{ post.date | date: "%Y-%m-%d" }}</time>
+      <time class="datetime" datetime="{{ post.date }}">{{ post.date | date: "%Y-%m-%d" }}</time>
       <div class="summary">
         {{ post.excerpt }}
       </div>
     </article>
     {% endfor %}
   </div>
+  {% include paginator.html %}
 </div>
 <script src="https://cdn.jsdelivr.net/npm/timeago.js@4.0.0-beta.2/dist/timeago.min.js" integrity="sha256-yUmXY9C8hRTwEO76qiJepCcZ82pw4S1bZftvGpFPbtI=" crossorigin="anonymous"></script>
 <script>timeago.render(document.querySelectorAll('.datetime'), 'zh_CN')</script>

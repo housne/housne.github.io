@@ -16,8 +16,8 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
-    addressable (2.6.0)
-      public_suffix (>= 2.0.2, < 4.0)
+    addressable (2.7.0)
+      public_suffix (>= 2.0.2, < 5.0)
     algolia_html_extractor (2.6.2)
       json (~> 2.0)
       nokogiri (~> 1.10.4)
@@ -56,7 +56,8 @@ GEM
       jekyll (>= 3.7, < 5.0)
     jekyll-feed (0.12.1)
       jekyll (>= 3.7, < 5.0)
-    jekyll-paginate (1.1.0)
+    jekyll-paginate-v2 (2.0.0)
+      jekyll (~> 3.0)
     jekyll-sass-converter (1.5.2)
       sass (~> 3.4)
     jekyll-seo-tag (2.6.1)
@@ -83,7 +84,7 @@ GEM
     pathutil (0.16.2)
       forwardable-extended (~> 2.6)
     progressbar (1.10.1)
-    public_suffix (3.1.1)
+    public_suffix (4.0.1)
     rb-fsevent (0.10.3)
     rb-inotify (0.10.0)
       ffi (~> 1.0)
@@ -112,7 +113,7 @@ DEPENDENCIES
   jekyll-archives
   jekyll-compose
   jekyll-feed (~> 0.12)
-  jekyll-paginate
+  jekyll-paginate-v2
   jekyll-seo-tag
   jekyll-sitemap
   minima (~> 2.5)

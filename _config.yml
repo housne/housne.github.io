@@ -24,21 +24,41 @@ description: >- # this means to ignore newlines until "baseurl:"
   and body workouts
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://goharry.dev" # the base hostname & protocol for your site, e.g. http://example.com
-twitter_username: _goharry
-github_username:  housne
 
 # Build settings
 theme: minima
 
 plugins:
   - jekyll-feed
-  - jekyll-paginate
+  - jekyll-paginate-v2
   - jekyll-archives
   - jekyll-sitemap
   - jekyll-seo-tag
 
-paginate: 5
-paginate_path: /page/:num/
+# paginate: 5
+# paginate_path: /page/:num/
+
+pagination:
+  enabled: true
+  permalink: /page/:num/
+  per_page: 5
+  sort_reverse: true
+  trail: 
+    before: 3 # The number of links before the current page
+    after: 3 
+
+autopages:
+  enabled: true
+  permalink: '/categories/:cat'
+  categories:
+    layouts: 
+      - archive.html
+  tags:
+    permalink: '/tags/:tag'
+    layouts: 
+      - archive.html
+  collections:
+      enabled: false
 
 permalink: /:year/:month/:slug/
 
