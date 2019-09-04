@@ -120,6 +120,12 @@ textarea.form-control {
   }
 }
 
+.btn-primary {
+  background: #007bff;
+  border-color: #007bff;
+  color: #fff;
+}
+
 @import "header";
 @import "search";
 
@@ -618,4 +624,20 @@ textarea.form-control {
 .comment-closed {
   padding-top: 2rem;
   color: #999;
+}
+.comment-preview-btn {
+  margin-left: 0.5rem;
+  display: none;
+}
+
+.post-staticman-comment {
+  .comment-form-textarea {
+    height: 8rem;
+  }
+  .comment-preview {
+    display: none;
+    height: 8rem;
+    overflow-y: auto;
+    background: var(--bg-light);
+  }
 }

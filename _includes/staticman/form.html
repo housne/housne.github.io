@@ -1,7 +1,8 @@
 <h2 class="comment-form-title">发表评论</h2>
 <form action="https://api.staticman.net/v3/entry/github/housne/housne.github.io/source/comments" method="post" class="comment-form" id="comment_form">
   <div class="form-group">
-    <textarea name="fields[message]" class="form-control" rows="6" placeholder="评论内容，支持 Markdown" required></textarea>
+    <textarea name="fields[message]" id="comment_textarea" class="form-control comment-form-textarea" placeholder="评论内容，支持 Markdown" required></textarea>
+    <div class="comment-preview form-control" id="comment_preview"></div>
   </div>
   <div class="comment-form-input-group">
     <div class="form-group">
@@ -17,5 +18,55 @@
   <input name="options[slug]" type="hidden" value="{{ include.slug }}">
   <input name="options[title]" type="hidden" value="{{ page.title }}">
   <input name="fields[parent]" type="hidden" value="">
-  <button class="btn" type="submit">提交</button>
+  <button class="btn btn-primary" type="submit">提交</button>
+  <span class="btn comment-preview-btn" id="comment_preview_button">预览</span>
 </form>
+<script src="https://cdn.jsdelivr.net/npm/marked@0.7.0/marked.min.js" integrity="sha256-I/8VPOoBbBJ+/zspj0Mcvm/YoekEpdBXxYgZRkjiZnk=" crossorigin="anonymous"></script>
+<script>
+  (function(){
+    let isInPreviewMode = false;
+    let previewAvailable = false;
+    const textareaEl = document.getElementById('comment_textarea');
+    const previewEl = document.getElementById('comment_preview');
+    const previewButton = document.getElementById('comment_preview_button');
+    function preview() {
+      const text = textareaEl.value.trim();
+      if (!text) {
+        return;
+      }
+      previewEl.innerHTML = marked(text);
+    }
+    function togglePreview() {
+      if (!isInPreviewMode) {
+        preview();
+        textareaEl.style.display = 'none';
+        previewEl.style.display = 'block';
+        previewButton.innerText = '编辑';
+      } else {
+        textareaEl.style.display = 'block';
+        previewEl.style.display = 'none';
+        previewButton.innerText = '预览';
+      }
+      isInPreviewMode = !isInPreviewMode;
+    }
+    previewButton.addEventListener('click', togglePreview);
+    textareaEl.addEventListener('keyup', function() {
+      const text = textareaEl.value.trim();
+      const hasText = text.length > 0;
+      if (previewAvailable && hasText) {
+        return;
+      }
+      if (!previewAvailable && !hasText) {
+        return;
+      }
+      if (previewAvailable && !hasText) {
+        previewButton.style.display = 'none';
+        previewAvailable = false;
+      }
+      if (!previewAvailable && hasText) {
+        previewButton.style.display = 'inline-block';
+        previewAvailable = true;
+      }
+    })
+  })()
+</script>
