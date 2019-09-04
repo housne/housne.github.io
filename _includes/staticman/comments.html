@@ -1,0 +1,27 @@
+{% assign comments = site.data.comments[include.slug] %}
+{% assign root_comments = comments | where_exp:'item', "item.parent == ''" %}
+{% assign comments_size = comments | size %}
+{% if comments_size > 0 %}
+<h2 class="comment-list-title">{{comments_size}} 条评论</h2>
+<div class="comment-list">
+{% for comment in root_comments %}
+  {% assign id = comment._id %}
+  {% assign url = comment.url %}
+  {% assign name = comment.name %}
+  {% assign date = comment.date %}
+  {% assign message = comment.message %}
+  {% assign email = comment.email %}
+  {% include staticman/comment.html
+    parent=id
+    url=url
+    name=name
+    date=date
+    message=message
+    slug=include.slug
+    email=email
+  %}
+{% endfor %}
+</div>
+<script src="https://cdn.jsdelivr.net/npm/timeago.js@4.0.0-beta.2/dist/timeago.min.js" integrity="sha256-yUmXY9C8hRTwEO76qiJepCcZ82pw4S1bZftvGpFPbtI=" crossorigin="anonymous"></script>
+<script>timeago.render(document.querySelectorAll('.comment-date'), 'zh_CN')</script>
+{% endif %}

@@ -1,0 +1,33 @@
+<div class="comment">
+  <img src="https://www.gravatar.com/avatar/{{include.email}}?d=mm&amp;s=60" alt="{{include.name}}" class="avatar">
+  <div class="detail">
+    <div class="comment-content">
+      <div class="info">{% if include.url %}<a href="{{include.url}}" target="_blank" rel="noopener">{{ include.name }}</a>{% else %}{{ include.name }}{% endif %} - <span class="comment-date" datetime="{{include.date | times: 1000 }}">{{ include.date | date: "%Y-%m-%d %H:%M" }}</span></div>
+      <div class="message">{{ include.message | strip_html | markdownify | smartify }}</div>
+    </div>
+    
+    {% assign replies = site.data.comments[include.slug] | where_exp: 'item', 'item.parent == include.parent' | sort: 'date' %}
+    {% assign reply_size = replies | size %}
+    {% if reply_size > 0 %}
+    <div class="replies">
+    {% for reply in replies %}
+      {% assign id = reply['_id'] %}
+      {% assign email = reply.email %}
+      {% assign name = reply.name %}
+      {% assign url = reply.url %} 
+      {% assign date = reply.date %}
+      {% assign message = reply.message %}
+      {% include staticman/comment.html
+        parent=id
+        email=email
+        name=name
+        url=url
+        date=date
+        message=message
+        slug=include.slug
+      %}
+    {% endfor %}
+    </div>
+    {% endif %}
+  </div>
+</div>

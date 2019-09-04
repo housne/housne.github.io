@@ -1,0 +1,21 @@
+<h2 class="comment-form-title">发表评论</h2>
+<form action="https://api.staticman.net/v3/entry/github/housne/housne.github.io/source/comments" method="post" class="comment-form" id="comment_form">
+  <div class="form-group">
+    <textarea name="fields[message]" class="form-control" rows="6" placeholder="评论内容，支持 Markdown" required></textarea>
+  </div>
+  <div class="comment-form-input-group">
+    <div class="form-group">
+      <input name="fields[name]" type="text" class="form-control" placeholder="称呼" required>
+    </div>
+    <div class="form-group">
+      <input name="fields[email]" type="email" class="form-control" placeholder="邮箱" required>
+    </div>
+    <div class="form-group">
+      <input name="fields[url]" type="url" class="form-control" placeholder="网站">
+    </div>
+  </div>
+  <input name="options[slug]" type="hidden" value="{{ include.slug }}">
+  <input name="options[title]" type="hidden" value="{{ page.title }}">
+  <input name="fields[parent]" type="hidden" value="">
+  <button class="btn" type="submit">提交</button>
+</form>

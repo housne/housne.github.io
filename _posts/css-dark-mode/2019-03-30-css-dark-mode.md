@@ -3,6 +3,7 @@ title: CSS dark mode
 date: 2019-03-30T10:53:05+08:00
 tags: [css]
 layout: post
+comment: closed
 ---
 
 macOS Mojave 引入了深色模式，深色模式使用一种较深的配色方案，这种配色作用于整个系统，包括 Mac 随附的应用。另外，第三方应用也可以适配这一模式。
