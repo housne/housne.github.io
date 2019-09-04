@@ -1,5 +1,5 @@
-<div class="comment">
-  <img src="https://www.gravatar.com/avatar/{{include.email}}?d=mm&amp;s=60" alt="{{include.name}}" class="avatar">
+<div class="comment{% if include.is_reply %} is_reply{% endif %}">
+  <img src="https://www.gravatar.com/avatar/{{include.email}}?d=mm&amp;s={% if include.is_reply %}50{% else %}60{% endif %}" alt="{{include.name}}" class="avatar">
   <div class="detail">
     <div class="comment-content">
       <div class="info">{% if include.url %}<a href="{{include.url}}" target="_blank" rel="noopener">{{ include.name }}</a>{% else %}{{ include.name }}{% endif %} - <span class="comment-date" datetime="{{include.date | times: 1000 }}">{{ include.date | date: "%Y-%m-%d %H:%M" }}</span></div>
@@ -25,6 +25,7 @@
         date=date
         message=message
         slug=include.slug
+        is_reply=true
       %}
     {% endfor %}
     </div>

@@ -522,12 +522,9 @@ textarea.form-control {
   margin-right: 0.5rem;
 }
 
-.post-staticman-comment {
-  padding-top: 1rem;
-}
-
 .comment-form-title, .comment-list-title {
   display: inline-block;
+  margin-top: 2rem;
   padding-top: 1rem;
   position: relative;
   &:before {
@@ -541,15 +538,17 @@ textarea.form-control {
   }
 }
 
-.comment-form-title {
-  margin-top: 3rem;
-}
-
 .comment-form-input-group {
   display: flex;
   justify-content: space-between;
   .form-group {
     width: calc(100% / 3 - 2rem / 3)
+  }
+  @media (max-width: 562px) {
+    display: block;
+    .form-group {
+      width: 100%;
+    }
   }
 }
 
@@ -604,5 +603,18 @@ textarea.form-control {
         color: #999;
       }
     }
+    &.is_reply {
+      .avatar {
+        height: 50px;
+        width: 50px;
+      }
+      .comment-content {
+        min-height: 50px;
+      }
+    }
   }
+}
+.comment-closed {
+  padding-top: 2rem;
+  color: #999;
 }
