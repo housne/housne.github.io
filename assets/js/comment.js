@@ -29,17 +29,19 @@
     })
   });
   const commentList = document.getElementById('comment_list');
-  commentList.addEventListener('click', function(e) {
-    const target = e.target;
-    if (!target.classList.contains('reply-button')) {
-      return;
-    }
-    toggleReply(target);
-  })
+  if (commentList) {
+    commentList.addEventListener('click', function(e) {
+      const target = e.target;
+      if (!target.classList.contains('reply-button')) {
+        return;
+      }
+      toggleReply(target);
+    })
 
-  document.getElementById('cancel_reply_button').addEventListener('click', function() {
-    toggleReply();
-  });
+    document.getElementById('cancel_reply_button').addEventListener('click', function() {
+      toggleReply();
+    });
+  }
 
   function saveAuthorData(name, email, url) {
     localStorage.setItem('authorData', JSON.stringify({ name, email, url }));

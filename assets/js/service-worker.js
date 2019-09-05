@@ -6,8 +6,7 @@ importScripts('https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox
 {% assign revision = site.time | date: '%s' %}
 
 let pagesToCache = [{
-  url: '/index.html',
-  revision: '{{revision}}'
+  url: '/index.html'
 }];
 
 workbox.routing.registerRoute(
@@ -29,7 +28,7 @@ workbox.routing.registerRoute(
 
 {% assign posts_to_cache = site.posts | slice: 0, 10 %}
 {% for post in posts_to_cache %}
-pagesToCache.push({url: "{{post.url}}", revision: "{{revision}}"})
+pagesToCache.push({url: "{{post.url}}"})
 {% endfor %}
 
 workbox.precaching.precacheAndRoute(pagesToCache);
