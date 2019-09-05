@@ -134,14 +134,14 @@ textarea.form-control {
 
 
 .post-list {
-  padding-top: 0.5rem;
+  padding-top: 2rem;
   .post {
-    margin: 1.5rem 0;
-    border-bottom: solid 1px var(--border-color);
-    padding-bottom: 10px;
-    &:last-child {
-      border-bottom: none;
+    padding: 2rem 0;
+    border-top: solid 1px var(--border-color);
+    &:first-child {
+      border-top: none;
       margin-bottom: 0;
+      padding-top: 0;
     }
     .datetime {
       display: block;
@@ -151,7 +151,7 @@ textarea.form-control {
       color: var(--secondary-font-color);
     }
     .title {
-      margin: 1rem 0;
+      margin: 0 0 1rem;
       font-size: 1.4rem;
       font-weight: 400;
       a {
@@ -161,6 +161,12 @@ textarea.form-control {
     .summary {
       line-height: 1.8;
       text-align: justify;
+      * {
+        &:last-child {
+          margin-bottom: 0;
+          padding-bottom: 0;
+        }
+      }
     }
   }
 }
@@ -534,9 +540,11 @@ textarea.form-control {
 
 .comment-form-title, .comment-list-title {
   display: inline-block;
-  margin-top: 2rem;
+  margin: 2rem 0;
   padding-top: 1rem;
   position: relative;
+  font-size: 1.4rem;
+  font-weight: 400;
   &:before {
     content: "";
     position: absolute;
