@@ -48,10 +48,6 @@ function rewrite() {
     .pipe(dest('_site'));
 }
 
-function copySite() {
-  return src('_site/**/*.*').pipe(dest('_site'));
-}
-
 exports.htmlMinifyInline = htmlMinifyInline;
 exports.jsMinify = jsMinify;
 exports.default = series(revision, rewrite, htmlMinifyInline, jsMinify, cssMinify);
