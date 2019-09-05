@@ -28,5 +28,4 @@ layout: default
   </aside>
   {% include staticman/index.html %}
 </div>
-{% assign build_time_param = site.time | date: '%s' | prepend: '?v=' %}
-<script src="{{ '/assets/js/anchor.js' | relative_url | append: build_time_param }}"></script>
+<script src="{{ '/assets/js/anchor.js' | relative_url }}"></script>

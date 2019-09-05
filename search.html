@@ -10,10 +10,9 @@ slug: /search/
       <div class="search-result-placeholder">搜索中</div>
   </div>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/algoliasearch@3.33.0/dist/algoliasearchLite.min.js" integrity="sha256-3Laj91VXexjTlFLgL8+vvIq27laXdRmFIcO2miulgEs=" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@3.4.0/dist/instantsearch.production.min.js" integrity="sha256-pM0n88cBFRHpSn0N26ETsQdwpA7WAXJDvkHeCLh3ujI=" crossorigin="anonymous"></script>
-{% assign build_time_param = site.time | date: '%s' | prepend: '?v=' %}
-<script src="{{ '/assets/js/search.js' | relative_url | append: build_time_param }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/algoliasearch@3.33.0/dist/algoliasearchLite.min.js" crossorigin="anonymous" integrity="sha256-3Laj91VXexjTlFLgL8+vvIq27laXdRmFIcO2miulgEs=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@3.4.0/dist/instantsearch.production.min.js" crossorigin="anonymous" integrity="sha256-pM0n88cBFRHpSn0N26ETsQdwpA7WAXJDvkHeCLh3ujI=" crossorigin="anonymous"></script>
+<script src="{{ '/assets/js/search.js' | relative_url }}"></script>
 {% assign algolia = site.algolia %}
 <script>
   var search = GH.search('{{algolia.application_id}}', '{{algolia.search_key}}', '{{algolia.index_name}}');

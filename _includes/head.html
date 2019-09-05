@@ -2,6 +2,5 @@
   <meta charset="utf-8" />
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   {% seo %}
-  {% assign build_time_param = site.time | date: '%s' | prepend: '?v=' %}
-  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url | append: build_time_param }}" />
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}" />
 </head>

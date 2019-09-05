@@ -5,8 +5,7 @@
   <div class="comment-closed">评论已关闭</div>
 {% else%}
   {% include staticman/form.html slug=slug %}
-  {% assign build_time_param = site.time | date: '%s' | prepend: '?v=' %}
-  <script src="{{ '/assets/js/comment.js' | relative_url | append: build_time_param }}"></script>
+  <script src="{{ '/assets/js/comment.js' | relative_url }}"></script>
 {% endif %}
 
 </div>
