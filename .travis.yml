@@ -1,15 +1,19 @@
 language: ruby
 
+node_js: "10.16.3"
+
 before_install:
   - gem install bundler
 
 install:
   - bundle install
+  - npm install
 
 script:
   # Execute the hugo build
   - bundle exec jekyll build
   - bundle exec jekyll algolia
+  - npm run build
 
 branches:
   # I chose to build all branches aside from the master branch

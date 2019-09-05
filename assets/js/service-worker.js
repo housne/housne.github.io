@@ -33,5 +33,3 @@ pagesToCache.push({url: "{{post.url}}", revision: "{{revision}}"})
 {% endfor %}
 
 workbox.precaching.precacheAndRoute(pagesToCache);
-
-console.log(pagesToCache);
