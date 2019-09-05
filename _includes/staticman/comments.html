@@ -3,7 +3,7 @@
 {% assign comments_size = comments | size %}
 {% if comments_size > 0 %}
 <h2 class="comment-list-title">{{comments_size}} 条评论</h2>
-<div class="comment-list">
+<div class="comment-list" id="comment_list">
 {% for comment in root_comments %}
   {% assign id = comment._id %}
   {% assign url = comment.url %}
@@ -12,7 +12,7 @@
   {% assign message = comment.message %}
   {% assign email = comment.email %}
   {% include staticman/comment.html
-    parent=id
+    id=id
     url=url
     name=name
     date=date

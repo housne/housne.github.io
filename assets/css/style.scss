@@ -118,6 +118,9 @@ textarea.form-control {
     outline: none;
     box-shadow: 0 0 0 0.2rem rgba(38,143,255,.3);
   }
+  &:disabled {
+    opacity: 0.65;
+  }
 }
 
 .btn-primary {
@@ -545,6 +548,10 @@ textarea.form-control {
   }
 }
 
+.comment-form-title {
+  margin-bottom: 0;
+}
+
 .comment-form-input-group {
   display: flex;
   justify-content: space-between;
@@ -589,6 +596,13 @@ textarea.form-control {
         display: flex;
         flex-direction: column;
         justify-content: center;
+        .info {
+          &:hover {
+            .reply-button {
+              display: inline-block;
+            }
+          }
+        }
       }
       .replies {
         margin: 1rem 0;
@@ -619,13 +633,23 @@ textarea.form-control {
         min-height: 50px;
       }
     }
+    .reply-button {
+      color: var(--link-color);
+      cursor: pointer;
+      background: none;
+      padding: 0;
+      margin: 0;
+      border: none;
+      margin-left: 0.5rem;
+      display: none;
+    }
   }
 }
 .comment-closed {
   padding-top: 2rem;
   color: #999;
 }
-.comment-preview-btn {
+.comment-preview-btn, .cancel-reply-btn {
   margin-left: 0.5rem;
   display: none;
 }
@@ -639,5 +663,17 @@ textarea.form-control {
     height: 8rem;
     overflow-y: auto;
     background: var(--bg-light);
+  }
+}
+
+.comment-form {
+  padding-top: 1rem;
+}
+
+.comment-form-box {
+  &.is-reply {
+    .cancel-reply-btn {
+      display: inline-block;
+    }
   }
 }

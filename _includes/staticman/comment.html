@@ -2,11 +2,15 @@
   <img src="https://www.gravatar.com/avatar/{{include.email}}?d=mm&amp;s={% if include.is_reply %}50{% else %}60{% endif %}" alt="{{include.name}}" class="avatar">
   <div class="detail">
     <div class="comment-content">
-      <div class="info">{% if include.url %}<a href="{{include.url}}" target="_blank" rel="noopener">{{ include.name }}</a>{% else %}{{ include.name }}{% endif %} - <span class="comment-date" datetime="{{include.date | times: 1000 }}">{{ include.date | date: "%Y-%m-%d %H:%M" }}</span></div>
+      <div class="info">
+        {% if include.url %}<a href="{{include.url}}" target="_blank" rel="noopener">{{ include.name }}</a>{% else %}{{ include.name }}{% endif %} - 
+        <span class="comment-date" datetime="{{include.date | times: 1000 }}">{{ include.date | date: "%Y-%m-%d %H:%M" }}</span>
+        <button class="reply-button" data-author="{{include.name}}" data-id="{{ include.id }}">回复</button>
+      </div>
       <div class="message">{{ include.message | strip_html | markdownify | smartify }}</div>
     </div>
     
-    {% assign replies = site.data.comments[include.slug] | where_exp: 'item', 'item.parent == include.parent' | sort: 'date' %}
+    {% assign replies = site.data.comments[include.slug] | where_exp: 'item', 'item.parent == include.id' | sort: 'date' %}
     {% assign reply_size = replies | size %}
     {% if reply_size > 0 %}
     <div class="replies">
@@ -18,7 +22,7 @@
       {% assign date = reply.date %}
       {% assign message = reply.message %}
       {% include staticman/comment.html
-        parent=id
+        id=id
         email=email
         name=name
         url=url
