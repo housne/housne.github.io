@@ -19,7 +19,7 @@ categories:
 
 minxin 是第一个被官方遗弃的方案，原因可以查看官方的说明 [Mixins Considered Harmful](https://reactjs.org/blog/2016/07/13/mixins-considered-harmful.html)。而 higher-order component 和 render props 使应用特别使大型应用引入另外一个问题：wrapper hell
 
-![wrapper hell](https://res.cloudinary.com/duzwe9psn/image/upload/c_limit,w_400/v1567497575/wrapper-hell_svf9hu.jpg)
+{% cloudinary /assets/images/posts/wrapper-hell.png alt="React wrapper-hell" %}
 
 这种类似于 callback hell 的方式不利于后期的维护和扩展，当然在开发的时候也不容易理解😂
 

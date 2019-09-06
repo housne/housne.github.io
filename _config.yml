@@ -127,3 +127,14 @@ socials:
   weibo: https://weibo.com/housne
   telegram: https://t.me/housne
   instagram: https://instagram.com/housne
+
+cloudinary:
+  cloud_name: duzwe9psn
+  only_prod: true
+  presets:
+    default:
+      min_width: 320
+      max_width: 720
+      fallback_max_width: 700
+      steps: 5
+      sizes: "(min-width: 50rem) 50rem, 90vw"

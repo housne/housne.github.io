@@ -13,7 +13,7 @@ layout: post
 
 fitbit flex 的外观很普通，戴手腕上就像一款普通的塑料环
 
-![fitbit flex](/assets/images/posts/fitbit.png)
+{% cloudinary /assets/images/posts/fitbit.png alt="fitbit flex" %}
 
 手环分两部分，外面的手环壳和里面的主机，手环壳是有两个的，一大一小，可根据自己手腕尺寸选择。
 
@@ -33,4 +33,4 @@ fitbit flex 的外观很普通，戴手腕上就像一款普通的塑料环
 
 app 是智能手环的一个重要载体，fitbit flex 的 app 中规中矩，主要记录和显示手环的数据，在 app 绑定账号就能在手机上随时同步查看手环的数据。
 
-![fitbit flex app](/assets/images/posts/fitbit-screenshot.png)
+{% cloudinary /assets/images/posts/fitbit-screenshot.png alt="fitbit flex app" %}
