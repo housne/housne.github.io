@@ -33,9 +33,15 @@
 }
 .github-icon {
   color: rgb(23, 21, 21);
+  @media (prefers-color-scheme: dark) {
+    color: var(--font-color);
+  }
 }
 .instagram-icon {
   color: rgb(38, 38, 38);
+  @media (prefers-color-scheme: dark) {
+    color: var(--font-color);
+  }
 }
 .telegram-icon {
   color: rgb(78, 164, 225);

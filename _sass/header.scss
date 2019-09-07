@@ -9,7 +9,7 @@
   .header-container {
     display: flex;
     align-items: center;
-    @media (max-width: 562px) {
+    @media (max-width: 720px) {
       display: block;
       text-align: center;
     }
@@ -18,7 +18,7 @@
     margin: 0;
     font-size: 1.2rem;
     padding-right: 1rem;
-    @media (max-width: 562px) {
+    @media (max-width: 720px) {
       padding-right: 0;
       
     }
@@ -30,7 +30,7 @@
     flex: 1;
     display: flex;
     align-items: center;
-    @media (max-width: 562px) {
+    @media (max-width: 720px) {
       padding-top: 1rem;
       justify-content: space-between;
       overflow-x: auto;
@@ -39,7 +39,7 @@
       color: var(--body-color);
       margin: 0 1rem;
       opacity: 0.65;
-      @media (max-width: 562px) {
+      @media (max-width: 720px) {
         margin-left: 0;
         margin-right: 0;
       }
@@ -49,7 +49,7 @@
     }
   }
   .header-search {
-    @media (max-width: 562px) {
+    @media (max-width: 720px) {
       padding-top: 1rem;
       border-top: solid 1px var(--border-color);
       margin-top: 1rem;
@@ -70,7 +70,7 @@
       width: 260px;
       box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
     }
-    @media (max-width: 562px) {
+    @media (max-width: 720px) {
       width: 100%;
       transition: none;
       &:focus {

@@ -90,12 +90,10 @@ exclude:
 
 jekyll-archives:
   enabled: 
-    - year
     - tags
     - categories
   layout: archive
   permalinks:
-    year: '/:year/'
     tag: '/tags/:name/'
     category: '/categories/:name/'
 
