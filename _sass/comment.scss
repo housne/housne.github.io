@@ -1,0 +1,147 @@
+.comment-form-title, .comment-list-title {
+  display: inline-block;
+  margin: 2rem 0;
+  padding-top: 1rem;
+  position: relative;
+  font-size: 1.4rem;
+  font-weight: 400;
+  &:before {
+    content: "";
+    position: absolute;
+    height: 3px;
+    background: rgba(255, 229, 100, 1);
+    left: 0;
+    top: 0;
+    width: 40%;
+  }
+}
+
+.comment-form-title {
+  margin-bottom: 0;
+}
+
+.comment-form-input-group {
+  display: flex;
+  justify-content: space-between;
+  .form-group {
+    width: calc(100% / 3 - 2rem / 3)
+  }
+  @media (max-width: 562px) {
+    display: block;
+    .form-group {
+      width: 100%;
+    }
+  }
+}
+
+.empty-comments {
+  font-size: 1.2rem;
+  color: #999;
+  text-align: center;
+  padding: 4rem 0;
+}
+
+.comment-list {
+  .comment {
+    display: flex;
+    margin: 2rem 0;
+    &:first-child {
+      margin-top: 0;
+    }
+    &:last-child {
+      margin-bottom: 0;
+    }
+    .avatar {
+      height: 60px;
+      width: 60px;
+      border-radius: 0.25rem;
+    }
+    .detail {
+      flex: 1;
+      padding-left: 1rem;
+      .comment-content {
+        min-height: 60px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        .info {
+          &:hover {
+            .reply-button {
+              display: inline-block;
+            }
+          }
+        }
+      }
+      .replies {
+        margin: 1rem 0;
+      }
+      .message {
+        padding-top: 0.5rem;
+        * {
+          &:last-child {
+            margin-bottom: 0;
+            padding-top: 0;
+          }
+          &:first-child {
+            margin-top: 0;
+            padding-bottom: 0;
+          }
+        }
+      }
+      .comment-date {
+        color: #999;
+      }
+    }
+    &.is_reply {
+      .avatar {
+        height: 50px;
+        width: 50px;
+      }
+      .comment-content {
+        min-height: 50px;
+      }
+    }
+    .reply-button {
+      color: var(--link-color);
+      cursor: pointer;
+      background: none;
+      padding: 0;
+      margin: 0;
+      border: none;
+      margin-left: 0.5rem;
+      display: none;
+    }
+  }
+}
+.comment-closed {
+  padding-top: 2rem;
+  color: #999;
+}
+.comment-preview-btn, .cancel-reply-btn {
+  margin-left: 0.5rem;
+  display: none;
+}
+
+.post-staticman-comment {
+  .comment-form-textarea {
+    height: 8rem;
+  }
+  .comment-preview {
+    display: none;
+    height: 8rem;
+    overflow-y: auto;
+    background: var(--bg-light);
+  }
+}
+
+.comment-form {
+  padding-top: 1rem;
+}
+
+.comment-form-box {
+  &.is-reply {
+    .cancel-reply-btn {
+      display: inline-block;
+    }
+  }
+}

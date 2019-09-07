@@ -1,5 +1,8 @@
 ---
 layout: default
+css:
+  - path: post.css
+    inline: true
 ---
 <div class="container single-post">
   <article>
@@ -28,4 +31,4 @@ layout: default
   </aside>
   {% include staticman/index.html %}
 </div>
-<script src="{{ '/assets/js/anchor.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/anchor.js' | relative_url }}" inline></script>

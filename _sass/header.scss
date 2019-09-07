@@ -63,12 +63,12 @@
   
   .header-search-input {
     margin-bottom: 0;
-    height: calc(1.5em + .75rem + 2px);
     width: 200px;
     transition: width 0.3s;
-    box-sizing: border-box;
+    box-shadow: 0 1px 1px 0 rgba(85,95,110,.2);
     &:focus {
       width: 260px;
+      box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
     }
     @media (max-width: 562px) {
       width: 100%;

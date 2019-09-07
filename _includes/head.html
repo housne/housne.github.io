@@ -5,4 +5,22 @@
   <link rel="shortcut icon" href="{{'/assets/images/icon/icon-48x48.png' | relative_url }}">
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}" />
   <link rel="manifest" href="{{ '/manifest.json' | relative_url }}">
+  {% if layout.css %}
+    {% for css in layout.css %}
+      {% if css.first %}
+        <link rel="stylesheet" href="{{ css.path | prepend: '/assets/css/' | relative_url }}"{% if css.inline %} inline{% endif %} />
+      {% else %}
+        <link rel="stylesheet" href="{{ css | prepend: '/assets/css/' | relative_url }}" />
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+  {% if page.css %}
+    {% for css in page.css %}
+      {% if css.first %}
+        <link rel="stylesheet" href="{{ css.path | prepend: '/assets/css/' | relative_url }}"{% if css.inline %} inline{% endif %} />
+      {% else %}
+        <link rel="stylesheet" href="{{ css | prepend: '/assets/css/' | relative_url }}" />
+      {% endif %}
+    {% endfor %}
+  {% endif %}
 </head>

@@ -5,7 +5,7 @@
     {% include header.html %}
     {{ content }}
     {% include footer.html %}
-    <script src="{{ '/assets/js/prefetch.js' | relative_url }}"></script>
+    <script src="{{ '/assets/js/prefetch.js' | relative_url }}" inline></script>
     <script>
         // Check that service workers are supported
     if ('serviceWorker' in navigator) {

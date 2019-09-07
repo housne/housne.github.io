@@ -1,10 +1,25 @@
-const { src, dest, series } = require('gulp');
+const { src, dest, series, watch } = require('gulp');
 const minifyInline = require('gulp-minify-inline');
 const htmlmin = require('gulp-htmlmin');
 const terser = require('gulp-terser');
 const rev = require('gulp-rev');
 const revRewrite = require('gulp-rev-rewrite');
 const cleanCSS = require('gulp-clean-css');
+const inlinesource = require('gulp-inline-source');
+const sass = require('gulp-sass');
+const path = require('path');
+
+
+function sassTransform() {
+  return src('assets/**/*.scss')
+    .pipe(sass({
+      includePaths: [
+        path.join(__dirname, '_sass'),
+        path.join(__dirname, 'node_modules/normalize-scss/sass'),
+      ]
+    }))
+    .pipe(dest('_site/assets'))
+}
 
 function htmlMinifyInline() {
   return src('_site/**/*.html')
@@ -48,6 +63,38 @@ function rewrite() {
     .pipe(dest('_site'));
 }
 
-exports.htmlMinifyInline = htmlMinifyInline;
-exports.jsMinify = jsMinify;
-exports.default = series(revision, rewrite, htmlMinifyInline, jsMinify, cssMinify);
+function inlineSource() {
+  return src('_site/**/*.html')
+  .pipe(inlinesource({
+    rootpath: path.join(__dirname, '_site')
+  }))
+  .pipe(dest('_site'))
+}
+
+function build() {
+  return series(
+    sassTransform,
+    htmlMinifyInline,
+    jsMinify,
+    cssMinify,
+    inlineSource,
+    revision,
+    rewrite
+  )
+}
+
+function watchChange() {
+  watch('_site/**/*.*', build)
+}
+
+exports.watch = watchChange;
+
+exports.default = series(
+  sassTransform,
+  htmlMinifyInline,
+  jsMinify,
+  cssMinify,
+  inlineSource,
+  revision,
+  rewrite
+);

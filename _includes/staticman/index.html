@@ -5,7 +5,7 @@
   <div class="comment-closed">评论已关闭</div>
 {% else%}
   {% include staticman/form.html slug=slug %}
-  <script src="{{ '/assets/js/comment.js' | relative_url }}"></script>
+  <script src="{{ '/assets/js/comment.js' | relative_url }}" inline></script>
 {% endif %}
 
 </div>
