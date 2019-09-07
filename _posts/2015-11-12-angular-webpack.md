@@ -16,23 +16,23 @@ layout: post
 
 ```javascript
 module.exports = {
-    ...
-    resolveLoader: {
-        modulesDirectories: ['node_modules']
-    },
-    resolve: {
-        extensions: ['', '.js']
-    },
-    module: {
-        loaders: [
-            {
-                test: /\.js$/,
-                loader: 'babel?presets[]=es2015',
-                exclude: /(node_modules|lib)/
-            }
-        ]
-    }
-    ...
+  ...
+  resolveLoader: {
+    modulesDirectories: ['node_modules']
+  },
+  resolve: {
+    extensions: ['', '.js']
+  },
+  module: {
+    loaders: [
+      {
+        test: /\.js$/,
+        loader: 'babel?presets[]=es2015',
+        exclude: /(node_modules|lib)/
+      }
+    ]
+  }
+  ...
 }
 ```
 
@@ -41,7 +41,7 @@ module.exports = {
 ```javascript
 ...
 externals: {
-    'angular': 'angular'
+  'angular': 'angular'
 }
 ...
 ```
@@ -68,21 +68,21 @@ angular.module("app", []).controller("HomeController", HomeController);
 
 ```javascript
 angular.module('app', []).config(function($locationProvider){
-    $locationProvider
-    .when('/', function(){
-        templateUrl: require('file!../templates/index.html'),
-        resolve: {
-            load: function(){
-                return new Promise(function(resolve, reject){
-                    require.ensure([], function(require){
-                        require('../controllers/home.js');
-                        resolve();
-                    });
-                });
-            },
-        },
-        controller: 'HomeController',
-        controllerAs: 'vm'
-    })
+  $locationProvider
+  .when('/', function(){
+    templateUrl: require('file!../templates/index.html'),
+    resolve: {
+      load: function(){
+          return new Promise(function(resolve, reject){
+              require.ensure([], function(require){
+                  require('../controllers/home.js');
+                  resolve();
+              });
+          });
+      },
+    },
+    controller: 'HomeController',
+    controllerAs: 'vm'
+  })
 })
 ```

@@ -16,13 +16,13 @@ layout: post
 
 ```js
 {
-    "server": "0.0.0.0",
-    "server_port": 8388,
-    "local_port": 1080,
-    "password": "PWD",
-    "timeout": 600,
-    "method": "aes-256-cfb",
-    "local_address": "127.0.0.1"
+  "server": "0.0.0.0",
+  "server_port": 8388,
+  "local_port": 1080,
+  "password": "PWD",
+  "timeout": 600,
+  "method": "aes-256-cfb",
+  "local_address": "127.0.0.1"
 }
 ```
 
@@ -32,13 +32,13 @@ layout: post
 
 ```js
 {
-    "server": "0.0.0.0", //这里填写你 vps 的ip地址
-    "server_port": 8388,
-    "local_port": 1080, //这里填写本地的代理端口，如端口被占用的话，可随意更改
-    "password": "PWD",
-    "timeout": 600,
-    "method": "aes-256-cfb",
-    "local_address": "127.0.0.1"
+  "server": "0.0.0.0", //这里填写你 vps 的ip地址
+  "server_port": 8388,
+  "local_port": 1080, //这里填写本地的代理端口，如端口被占用的话，可随意更改
+  "password": "PWD",
+  "timeout": 600,
+  "method": "aes-256-cfb",
+  "local_address": "127.0.0.1"
 }
 ```
 
