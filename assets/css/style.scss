@@ -1,0 +1,221 @@
+@import "normalize";
+@include normalize();
+
+:root {
+  --body-bg: #fff;
+  --link-color: #0070c9;
+  --border-color: #eee;
+  --font-color: #2c3e50;
+  --secondary-font-color: #999;
+  --bg-light: #f8f9fa;
+  --font-family: -apple-system, BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue, "PingFang SC", sans-serif;
+  @media (prefers-color-scheme: dark) {
+    --body-bg: rgb(30, 30, 30);
+    --border-color: rgb(65, 65, 65);;
+    --font-color: rgb(173, 173, 173);
+    --secondary-font-color: #999;
+    --bg-light: rgb(45, 45, 45);
+  }
+}
+
+
+
+body {
+  font-family: var(--font-family);
+  font-size: 1rem;
+  line-height: 1.47059;
+  color: var(--font-color);
+  background: var(--body-bg);
+}
+
+a {
+  color: var(--link-color);
+  &:link, &:visited {
+    text-decoration: none;
+  }
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+}
+
+h3 {
+  font-size: 1.4rem;
+}
+
+h4, h5 {
+  font-size: 1.2rem;
+}
+
+h6 {
+  font-size: 1rem;
+}
+
+code {
+  background: rgba(255,229,100,0.2);
+  font-family: source-code-pro,Menlo,Monaco,Consolas,Courier New,monospace;
+  color: #1a1a1a;
+  @media (prefers-color-scheme: dark) {
+    background: var(--bg-light);
+    color: #eee;
+  }
+}
+
+input, textarea, input[type=text], input[type=search] {
+  -webkit-appearance: none;
+}
+
+h4, h5, h6 {
+  font-weight: 400;
+}
+
+button, input, optgroup, select, textarea {
+  font-family: var(--font-family);
+}
+
+/* helpers */
+
+.flex {
+  display: flex;
+}
+
+.container {
+  max-width: 720px;
+  margin: 0 auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.form-control, .ais-SearchBox-input {
+  background: var(--body-bg);
+  color: var(--font-color);
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  height: calc(1.5em + .75rem + 2px);
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border: solid 1px var(--border-color);
+  border-radius: .25rem;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  &:focus {
+    border-color: #80bdff;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+  }
+  margin-bottom: 1rem;
+}
+
+textarea.form-control {
+  height: auto;
+}
+
+.btn {
+  display: inline-block;
+  font-weight: 400;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: 0.25rem;
+  padding: .375rem .75rem;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  background: var(--bg-light);
+  border: 1px solid var(--bg-light);
+  color: var(--font-color);
+  cursor: pointer;
+  &:hover {
+    background: #0069d9;
+    border-color: #0069d9;
+    color: #fff;
+  }
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 0.2rem rgba(38,143,255,.3);
+  }
+  &:disabled {
+    opacity: 0.65;
+  }
+}
+
+.btn-primary {
+  background: #007bff;
+  border-color: #007bff;
+  color: #fff;
+}
+
+@import "header";
+
+.page-content {
+  line-height: 1.8;
+  text-align: justify;
+  margin-bottom: 2rem;
+  p {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  img {
+    max-width: 100%;
+  }
+  h2 {
+    padding-top: 2.1125rem;
+    padding-bottom: 0;
+    margin-top: 2.1125rem;
+    border-top: solid 1px var(--border-color);
+  }
+}
+
+.page-title {
+  margin-top: 2rem;
+}
+
+
+.footer {
+  padding: 2rem 0;
+}
+
+.footer-container {
+  position: relative;
+  padding-top: 1.2rem;
+  align-items: center;
+  &:before {
+    content: "";
+    height: 1px;
+    background: var(--border-color);
+    top: -1px;
+    width: 3.2rem;
+    position: absolute
+  }
+  .footer-social-links {
+    padding-left: 1rem;
+    .social-icon {
+      height: 1rem;
+      width: 1rem;
+      margin-right: 0.5rem;
+    }
+  }
+}
+
+.term-list-link {
+  margin-bottom: 1rem;
+  margin-right: 0.8rem;
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.archive-page-title {
+  border-bottom: solid 1px var(--border-color);
+  padding-bottom: 1rem;
+  margin-bottom: 0;
+}
+
+@import "icons";

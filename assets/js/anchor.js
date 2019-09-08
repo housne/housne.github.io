@@ -1,0 +1,1 @@
+window.addEventListener("DOMContentLoaded",function(){document.getElementById("page-content").querySelectorAll("h1, h2, h3, h4, h5, h6").forEach(function(e){!function(e){const n=e.getAttribute("id"),t=document.createElement("a");t.href="#"+n,t.className="heading-anchor",e.classList.add("has-anchor"),e.prepend(t)}(e)})});

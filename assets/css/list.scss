@@ -1,0 +1,44 @@
+@import "pagination";
+
+.list-title {
+  border-bottom: solid 1px var(--border-color);
+  padding-bottom: 1rem;
+}
+
+.post-list {
+  padding-top: 2rem;
+  .post {
+    padding: 2rem 0;
+    border-top: solid 1px var(--border-color);
+    &:first-child {
+      border-top: none;
+      margin-bottom: 0;
+      padding-top: 0;
+    }
+    .datetime {
+      display: block;
+      
+      font-size: 0.9rem;
+      line-height: 1.1;
+      color: var(--secondary-font-color);
+    }
+    .title {
+      margin: 0 0 1rem;
+      font-size: 1.4rem;
+      font-weight: 400;
+      a {
+        color: var(--font-color);
+      }
+    }
+    .summary {
+      line-height: 1.8;
+      text-align: justify;
+      * {
+        &:last-child {
+          margin-bottom: 0;
+          padding-bottom: 0;
+        }
+      }
+    }
+  }
+}
