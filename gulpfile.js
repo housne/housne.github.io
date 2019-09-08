@@ -82,12 +82,9 @@ function build() {
     rewrite
   )
 }
-
-function watchChange() {
-  watch('_site/**/*.*', build)
-}
-
-exports.watch = watchChange;
+exports.watch = function() {
+  watch(['_site/**/*.*', '!_site/**/*.css'], sassTransform);
+};
 
 exports.default = series(
   sassTransform,

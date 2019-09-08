@@ -5,6 +5,7 @@ css:
     inline: true
 ---
 <div class="container single-post">
+  <!-- now build verify -->
   <article>
   <h1 class="page-title">{{ page.title }}</h1>
   <div class="page-content" id="page-content">{{ content }}</div>
@@ -13,10 +14,10 @@ css:
   <aside class="meta">
     <div class="date-tags">
       <section class="date">
-        <span>发表于: </span>{{ page.date | date: "%Y-%m-%d %H:%M" }}
+        <span>发表于:</span>{{ page.date | date: "%Y-%m-%d %H:%M" }}
       </section>
       <div class="tags">
-        标签: {% for tag in page.tags %}<a href="/tags/{{tag | slugify}}/">{{ tag }}</a>{% endfor %}
+        <span>标签:</span>{% for tag in page.tags %}<a href="/tags/{{tag | slugify}}/">{{ tag }}</a>{% endfor %}
       </div>
     </div>
     <div class="post-nav">
