@@ -17,7 +17,8 @@
     margin-top: -0.5rem;
     svg {
       height: 1rem !important;
-      width: 1rem !important; 
+      width: 1rem !important;
+      fill: var(--font-color);
     }
   }
   .ais-SearchBox-loadingIndicator {

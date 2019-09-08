@@ -1,0 +1,11 @@
+{% assign providers = include.providers | split: ',' %}
+<div class="social-links">
+{% for provider in providers %}
+  {% if site.socials[provider] %}
+    <a href="{{site.socials[provider]}}" title="{{provider}}" class="social-icon {{provider}}-icon" target="_blank" rel="nofollow noopener">
+      {% assign svg = 'svg/' | append: provider | append: '.svg' %}
+      {% include {{svg}} %}
+    </a>
+  {% endif %}
+{% endfor %}
+</div>
