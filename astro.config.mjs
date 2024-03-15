@@ -7,5 +7,10 @@ import tailwind from "@astrojs/tailwind";
 // https://astro.build/config
 export default defineConfig({
   site: 'https://housne.github.io',
-  integrations: [mdx(), sitemap(), tailwind()]
+  integrations: [mdx(), sitemap(), tailwind()],
+  markdown: {
+    shikiConfig: {
+      theme: 'one-dark-pro'
+    }
+  }
 });
