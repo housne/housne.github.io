@@ -1,0 +1,15 @@
+---
+import { format } from 'timeago.js'
+
+interface Props {
+	date: Date;
+}
+
+const { date } = Astro.props;
+---
+
+<time datetime={date.toISOString()}>
+	{
+	 format(date, 'zh_CN')
+	}
+</time>

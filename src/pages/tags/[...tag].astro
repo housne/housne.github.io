@@ -1,0 +1,37 @@
+---
+import type { Article } from '../../types';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleList from '../../components/ArticleList.astro';
+import { getArticles } from '../../helpers/article'
+
+type Props = {
+	tag: string
+	articles: Article[]
+}
+
+export async function getStaticPaths() {
+	const articles = await getArticles();
+	const allTags = articles.map((article) => article.data.tags).flat();
+	const uniqueTags = [...new Set(allTags)];
+	return uniqueTags.map(tag => {
+		const articlesInTag = articles.filter(article => article.data.tags.includes(tag));
+		return {
+			params: {
+				tag: tag,
+			},
+			props: {
+				tag,
+				articles: articlesInTag
+			}
+		}
+	})
+}
+
+const { articles, tag } = Astro.props
+
+---
+
+<BaseLayout title={`Tag: ${tag}`}>
+	<h1 class="text-3xl">{tag}</h1>
+	<ArticleList articles={articles} />
+</BaseLayout>
