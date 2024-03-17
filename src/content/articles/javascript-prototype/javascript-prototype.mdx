@@ -1,0 +1,87 @@
+---
+title: Javascript 原型链与继承
+date: 2014-06-04T02:53:05.000Z
+tags:
+  - javascript
+  - jsonp
+  - ajax
+description: javascript 的每个对象有一个内部的私有链接 __proto__, 它指向其构造函数的原型 prototype，而这个构造函数的 prototype 则继承于上层构造函数的 prototype, 这一层层的指向链接我们称之为原型链。形成这一层层链接我们要使用到 new 操作符
+---
+
+javascript 的每个对象有一个内部的私有链接 __proto__, 它指向其构造函数的原型 prototype，而这个构造函数的 prototype 则继承于上层构造函数的 prototype, 这一层层的指向链接我们称之为原型链。形成这一层层链接我们要使用到 new 操作符。
+
+## new 操作符做了什么
+
+```javascript
+function A(){
+    this.a = 1;
+}
+
+var b = new A();
+
+b.__proto__ === A.prototype //true
+```
+
+可以看到 b 的 __proto__ 的确是指向了 A 的 prototype, 上面的 new 操作符可以解释为以下代码:
+
+```javascript
+var b = new Object();
+b.__proto__ = A.prototype;
+A.call(b);
+```
+
+首先 b 赋值为一个空对象，将 b 的 __proto__ 指向了 A 的 prototype, 然后将 A 的 this 指向 b。
+
+## 原型继承
+
+在面向对象中，继承是指子类继承来自父类的所有属性和方法，javascript 并没有类，只有构造函数，要实现继承我们要用到上面提到的原型，我们叫原型继承
+
+```javascript
+function Person(name, age){
+    this.name = name;
+    this.age = age;
+}   
+
+function Engineer(name, age, job){
+    Person.call(this, name, age);
+    this.job = job;
+}
+
+Engineer.prototype = new Person();
+Engineer.prototype.constructor = Engineer;
+
+someone = new Engineer('john', 28, 'front-end');
+
+someone.name; //john
+someone.age; //28
+someone.job; //front-end
+```
+
+someone 的 __proto__ 指向了Engineer 的 prototype, 而我们把 Engineer 的 prototype 赋值为 Person 的实例化对象，使其继承了 Person 所有的属性， 也就是 someone 同时拥有了 Person 和 Engineer 的所有属性。
+
+## 工厂模式
+
+上面的做法估计是大家比较熟悉的方式，接近于面向对象思想，而下面的继承方式完全抛弃了面向对象的思想，抛弃了原型链
+
+```javascript
+function person(name, age){
+    var that = {};
+    that.name = name;
+    that.age = age;
+    return that;
+}
+
+function engineer(name, age, job){
+    var that = person(name, age);
+    that.job = job;
+    return that;
+}
+
+someone = engineer('john', 28, 'front-end');
+
+someone.name; //john
+someone.age; //28
+someone.job; //front-end
+```
+
+上面的方法没用到构造函数，没用到 new 操作符, 在 personal 中创建了一个对象，用来存储 peronal 的所有属性，并在函数最后作为返回值，在 engineer 中，执行了 person 函数，并把返回值赋值给了一个变量，这样我们就取到到 person 的所有属性，然后在这个变量上扩充自己的属性，最后也是把这个变量作为了返回值。

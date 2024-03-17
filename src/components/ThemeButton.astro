@@ -1,0 +1,21 @@
+<button id="theme-button"></button>
+<script>
+  import { getDefaultTheme } from '../helpers/theme.js'
+  import { Theme } from '../types/theme'
+  let theme = getDefaultTheme()
+  const themeButton = document.getElementById('theme-button');
+  if (themeButton) themeButton.innerText = theme === Theme.Light ? '🌚' : '🌞';
+  themeButton?.addEventListener('click', () => {
+    if (theme === 'light') {
+      document.documentElement.classList.add('dark')
+      themeButton.innerText = '🌞'
+      localStorage.setItem('theme', Theme.Dark)
+      theme = Theme.Dark
+    } else {
+      document.documentElement.classList.remove('dark')
+      themeButton.innerText = '🌚'
+      localStorage.setItem('theme', Theme.Light)
+      theme = Theme.Light
+    }
+  })
+</script>
