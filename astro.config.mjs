@@ -12,5 +12,8 @@ export default defineConfig({
     shikiConfig: {
       theme: 'one-dark-pro'
     }
+  },
+  prefetch: {
+    prefetchAll: true
   }
 });
