@@ -1,0 +1,25 @@
+---
+import Copy from './icons/Copy.astro'
+const props = Astro.props
+---
+
+<div class="code-block relative">
+  <button class="code-block-copy-button absolute top-2 right-2"><Copy /></button>
+  <pre {...props}><slot /></pre>
+</div>
+
+<script>
+  const copy = (text: string) => {
+    navigator.clipboard.writeText(text)
+  }
+
+  const copyButton = document.querySelectorAll('.code-block-copy-button')
+  copyButton.forEach(button => {
+    button.addEventListener('click', () => {
+      console.log('copy')
+      const pre = button.nextElementSibling
+      copy(pre.innerText)
+    })
+  })
+
+</script>

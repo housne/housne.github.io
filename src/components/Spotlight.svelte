@@ -147,7 +147,7 @@ const NAVS  = [
           bind:this={input}
         />
         <div class="space-x-2 flex">
-        {#if searchQuery}<button class="flex items-center justify-center border rounded-full opacity-50 hover:opacity-100" on:click={clear}><CloseIcon class="w-5 h-5" /></button>{/if}
+        {#if searchQuery}<button class="flex items-center justify-center border rounded-full opacity-50 hover:opacity-100 w-5 h-5" on:click={clear}><CloseIcon class="w-4 h-4" /></button>{/if}
         <button class="border rounded-md py-0.5 px-1 text-xs text-gray-500 dark:border-gray-800 hover:bg-gray-50 dark:hover:bg-gray-800" on:click={close}>Esc</button>
         </div>
       </div>

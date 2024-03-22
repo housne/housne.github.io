@@ -3,6 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import { type Article } from '../../types';
 import { getArticles } from '../../helpers/article'
 import TimeAgo from '../../components/TimeAgo.astro';
+import CodeBlock from '../../components/CodeBlock.astro';
 
 export async function getStaticPaths() {
 	const articles = await getArticles();
@@ -42,7 +43,7 @@ const { Content } = await article.render();
 			<TimeAgo date={article.data.date} />
 		</div>
 		<div class="prose dark:prose-invert">
-			<Content />
+			<Content components={{pre: CodeBlock}} />
 		</div>
 	</article>
 	<div>
