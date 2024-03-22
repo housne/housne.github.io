@@ -4,12 +4,10 @@ import sitemap from '@astrojs/sitemap';
 import tailwind from "@astrojs/tailwind";
 import svelte from "@astrojs/svelte";
 
-import db from "@astrojs/db";
-
 // https://astro.build/config
 export default defineConfig({
   site: 'https://housne.github.io',
-  integrations: [mdx(), sitemap(), tailwind(), svelte(), db()],
+  integrations: [mdx(), sitemap(), tailwind(), svelte()],
   markdown: {
     shikiConfig: {
       theme: 'one-dark-pro'
