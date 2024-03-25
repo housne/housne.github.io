@@ -22,7 +22,7 @@ Oauth 认证的第一步，需要跳转用户到对应的第三方网站进行�
 
 首先在环境变量文件中添加 `NEXT_PUBLIC_SITE_URL` 用于区别开发和线上的访问链接，本地的值为 `http://localhost:3000`, 然后创建文件 `/pages/api/connect/github.ts`
 
-```typescript
+```typescript title="/pages/api/connect/github.ts"
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 export default function handler(
@@ -44,7 +44,7 @@ Oauth 后面的步骤就是用户完成授权后，会跳转回我们在应用�
 
 创建 `/pages/api/oauth/github/callback.ts`
 
-```typescript
+```typescript title="/pages/api/oauth/github/callback.ts"
 import type { NextApiRequest, NextApiResponse } from 'next'
 import axios from 'axios'
 import cookie from 'cookie'
@@ -127,7 +127,7 @@ function setupHTML(user: User) {
 
 首先在环境变量文件中添加 `JWT_SECRET` 加密密码，然后创建 `/lib/jwt.ts`
 
-```typescript
+```typescript title="/lib/jwt.ts"
 import jwt from 'jsonwebtoken'
 
 const JWT_SECRET = process.env.JWT_SECRET
@@ -148,7 +148,7 @@ export function decode<T>(token: string) {
 
 添加接口读取 cookie 中用户数据，创建 `/pages/api/user.ts`
 
-```typescript
+```typescript title="/pages/api/user.ts"
 import type { NextApiRequest, NextApiResponse } from 'next'
 import cookie from 'cookie'
 import { decode, encode } from '../../lib/jwt'
@@ -175,7 +175,7 @@ export default function handler(
 
 添加接口清除用户 cookie 即可退出用户登录，创建 `/pages/api/logout.ts`
 
-```typescript
+```typescript title="/pages/api/logout.ts"
 import type { NextApiRequest, NextApiResponse } from 'next'
 import cookie from 'cookie'
 
@@ -193,7 +193,7 @@ export default function handler(
 
 完成后端接口后，我们创建上下文处理用户认证，创建文件 `/context/auth/provider.tsx`
 
-```tsx
+```tsx title="/context/auth/provider.tsx"
 import { createContext, PropsWithChildren, useCallback, useEffect, useState } from "react"
 import { User } from "../../types/user"
 
@@ -256,7 +256,7 @@ export function AuthContextProvider({ children }: PropsWithChildren<{}>) {
 
 更新 `/pages/_app.tsx` 文件
 
-```tsx
+```tsx title="/pages/_app.tsx"
 import '../styles/globals.css'
 import type { AppProps } from 'next/app'
 
