@@ -17,5 +17,6 @@
       localStorage.setItem('theme', Theme.Light)
       theme = Theme.Light
     }
+    window.dispatchEvent(new CustomEvent('theme-change', { detail: theme}))
   })
 </script>
