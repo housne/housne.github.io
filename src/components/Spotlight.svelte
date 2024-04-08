@@ -1,6 +1,6 @@
 <script lang="ts">
 import Fuse from 'fuse.js'
-import { onMount, onDestroy } from 'svelte'
+import { onMount, onDestroy, tick } from 'svelte'
 import SearchIcon from './icons/Search.svelte'
 import CloseIcon from './icons/Close.svelte'
 import clsx from 'clsx'
@@ -19,8 +19,9 @@ type Article = {
 let index: Fuse<Article>
 let searchQuery: string
 let isOpen: boolean = false
+let input: HTMLInputElement
 
-let result: Article[]
+let result: Article[] | undefined
 
 async function search(query: string) {
   if (!index) {
@@ -48,7 +49,7 @@ $: {
       result = res.map((r) => r.item)
     })
   } else if (searchQuery === '') {
-    result = []
+    result = undefined
   }
 }
 
@@ -71,6 +72,16 @@ const close = () => {
   document.body.style.overflow = 'auto'
 }
 
+const handleKeyboardBinding = (e: KeyboardEvent) => {
+  if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+    e.preventDefault()
+    open()
+  }
+  if (e.key === 'Escape') {
+    close()
+  }
+}
+
 onMount(() => {
   if (typeof window === 'undefined') return
   window.addEventListener('spotlight:open', open)
@@ -83,7 +94,23 @@ onDestroy(() => {
   window.removeEventListener('spotlight:close', close)
 })
 
+onMount(() => {
+  if (typeof window === 'undefined') return
+  window.addEventListener('keydown', handleKeyboardBinding)
+})
 
+onDestroy(() => {
+  if (typeof window === 'undefined') return
+  window.removeEventListener('keydown', handleKeyboardBinding)
+})
+
+$: {
+  if (isOpen) {
+    tick().then(() => {
+      input.focus()
+    })
+  }
+}
 
 const NAVS  = [
   {
@@ -111,17 +138,23 @@ const NAVS  = [
   <div class={clsx("relative z-10 max-w-screen-sm mx-auto mt-24 px-4 transition-[transform,opacity]", isOpen ? '' : 'scale-110 opacity-0')}>
     <div class="bg-white rounded-lg shadow-2xl dark:bg-gray-900 border dark:border-gray-800">
       <div class="relative flex items-center border-b dark:border-gray-800 px-2">
-        <SearchIcon class="w-5 h-5 text-gray-500 dark:text-gray-200" />
+        <SearchIcon class="w-6 h-6 text-gray-500 dark:text-gray-200" />
         <input 
           class="bg-transparent py-2.5 px-2 block w-full outline-none appearance-none" 
           placeholder="搜索文章"
           id="search"
           bind:value={searchQuery}
+          bind:this={input}
         />
-        {#if searchQuery}<button class="w-4 h-4 flex items-center justify-center border rounded-full opacity-50 hover:opacity-100" on:click={clear}><CloseIcon class="w-3 h-3" /></button>{/if}
+        <div class="space-x-2 flex">
+        {#if searchQuery}<button class="flex items-center justify-center border rounded-full opacity-50 hover:opacity-100 w-5 h-5" on:click={clear}><CloseIcon class="w-4 h-4" /></button>{/if}
+        <button class="border rounded-md py-0.5 px-1 text-xs text-gray-500 dark:border-gray-800 hover:bg-gray-50 dark:hover:bg-gray-800" on:click={close}>Esc</button>
+        </div>
       </div>
       <div>
-        {#if result?.length === 0}
+        {#if !result}
+          <div></div>
+        {:else if result?.length === 0}
           <div class="text-center text-gray-500 py-6 pb-4 text-sm">暂无搜索结果</div>
         {:else if result?.length > 0}
         <div class="pt-2">

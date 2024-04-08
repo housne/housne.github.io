@@ -1,13 +1,30 @@
 ---
 import { SITE_TITLE } from '../consts';
 import Spotlight from './Spotlight.svelte';
+import SpotlightButton from './SpotlightButton.astro';
+import ThemeButton from './ThemeButton.astro';
 ---
 
 <header class="h-[60px] mb-8 md:mb-0">
-	<div class="flex items-center px-4 py-4 fixed z-20 top-0 left-0 w-full h-[60px] bg-white/50">
+	<div id="header" class="flex items-center px-4 py-4 fixed z-20 top-0 left-0 w-full h-[60px] bg-white/50 dark:bg-gray-900/50 justify-between backdrop-blur-sm">
 		<h1>
 			<a href="/">{SITE_TITLE}</a>
 		</h1>
+		<div class="space-x-4 flex">
+			<ThemeButton />
+			<SpotlightButton />
+		</div>
 	</div>
 </header>
 <Spotlight client:load />
+<script>
+	document.addEventListener('scroll', () => {
+		const header = document.getElementById('header');
+		if (!header) return;
+		if (window.scrollY > 0) {
+			header.classList.add('border-b', 'dark:border-gray-800');
+		} else {
+			header.classList.remove('border-b', 'dark:border-gray-800');
+		}
+	});
+</script>

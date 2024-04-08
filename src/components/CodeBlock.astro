@@ -1,0 +1,36 @@
+---
+import Copy from './icons/Copy.astro'
+import Check from './icons/Check.astro'
+const props = Astro.props
+---
+
+<div class="code-block relative group">
+  <button class="code-block-copy-button absolute top-4 right-4 hidden group-hover:block">
+    <i class="copy-icon"><Copy /></i>
+    <i class="hidden check-icon text-green-700"><Check /></i>
+  </button>
+  <pre {...props}><slot /></pre>
+</div>
+
+<script>
+  const copy = (text: string) => {
+    navigator.clipboard.writeText(text)
+  }
+
+  const copyButton = document.querySelectorAll('.code-block-copy-button')
+  copyButton.forEach(button => {
+    const copyIcon = button.querySelector('.copy-icon')
+    const checkIcon = button.querySelector('.check-icon')
+    button.addEventListener('click', () => {
+      const pre = button.nextElementSibling as HTMLPreElement
+      copy(pre?.innerText)
+      copyIcon?.classList.add('hidden')
+      checkIcon?.classList.remove('hidden')
+      setTimeout(() => {
+        copyIcon?.classList.remove('hidden')
+        checkIcon?.classList.add('hidden')
+      }, 1000)
+    })
+  })
+
+</script>
