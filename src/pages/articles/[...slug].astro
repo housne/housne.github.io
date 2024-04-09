@@ -3,6 +3,9 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import { type Article } from '../../types';
 import { getArticles } from '../../helpers/article'
 import TimeAgo from '../../components/TimeAgo.astro';
+import Comment from '../../components/Comment.astro';
+import ArticleNav from '../../components/ArticleNav.astro';
+import ArticleTag from '../../components/ArticleTag.astro';
 
 export async function getStaticPaths() {
 	const articles = await getArticles();
@@ -34,9 +37,6 @@ const { Content } = await article.render();
 
 <BaseLayout title={article.data.title} description={article.data.description} image={article.data.heroImage}>
 	<article>
-		<div class="hero-image">
-			{article.data.heroImage && <img width={1020} height={510} src={article.data.heroImage} alt="" />}
-		</div>
 		<h1 class="text-3xl mb-4">{article.data.title}</h1>
 		<div class="text-sm text-gray-500 mb-8">
 			<TimeAgo date={article.data.date} />
@@ -45,74 +45,13 @@ const { Content } = await article.render();
 			<Content />
 		</div>
 	</article>
-	<div>
-		{
-			article.data.tags.map((tag) => (
-				<a href={`/tags/${tag}`} class="tag">
-					{tag}
-				</a>
-			))
-		}
+
+	<ArticleTag tags={article.data.tags} />
+
+	<ArticleNav prev={prev} next={next} />
+
+	<div class="pt-4">
+		<Comment />
 	</div>
-	<div class="flex flex-col sm:flex-row mt-10 gap-4 w-full">
-		{prev && (
-			<a href={`/articles/${prev.slug}`} class="group flex-1 text-sm flex flex-col grow p-3 rounded-lg border hover:border-gray-500 dark:border-gray-700 dark:hover:border-gray-500 transition-all space-y-1">
-				<p class="text-gray-500">上一篇</p>
-				<p class="font-semibold text-gray-900 dark:text-white">{prev.data.title}</p>
-			</a>
-		)}
-		{next && (
-			<a href={`/articles/${next.slug}`} class="group flex-1 text-sm flex flex-col grow p-3 rounded-lg border hover:border-gray-500 dark:border-gray-700 dark:hover:border-gray-500 transition-all space-y-1">
-				<p class="text-gray-500">下一篇</p>
-				<p class="font-semibold text-gray-900 dark:text-white">{next.data.title}</p>
-			</a>
-		)}
-	</div>
-	<div id="comment_box"></div>
-	<script>
-		import { getDefaultTheme } from '../../helpers/theme'
-		const theme = getDefaultTheme();
-		const giscusTheme = theme === 'dark' ? 'transparent_dark' : 'light';
-		const giscusConfig = {
-			repo: 'housne/housne.github.io',
-			repoId: 'MDEwOlJlcG9zaXRvcnk4ODc0NjQxNQ==',
-			category: 'General',
-			categoryId: 'DIC_kwDOBUopr84CejID',
-			mapping: 'pathname',
-			strict: 0,
-			reactionsEnabled: 1,
-			emitMetadata: 0,
-			inputPosition: 'bottom',
-			theme: giscusTheme,
-			lang: 'en',
-			loading: 'lazy'
-		};
-		const script = document.createElement('script');
-		script.src = 'https://giscus.app/client.js';
-		script.setAttribute('data-repo', giscusConfig.repo);
-		script.setAttribute('data-repo-id', giscusConfig.repoId);
-		script.setAttribute('data-category', giscusConfig.category);
-		script.setAttribute('data-category-id', giscusConfig.categoryId);
-		script.setAttribute('data-mapping', giscusConfig.mapping);
-		script.setAttribute('data-strict', giscusConfig.strict.toString());
-		script.setAttribute('data-reactions-enabled', giscusConfig.reactionsEnabled.toString());
-		script.setAttribute('data-emit-metadata', giscusConfig.emitMetadata.toString());
-		script.setAttribute('data-input-position', giscusConfig.inputPosition);
-		script.setAttribute('data-theme', giscusConfig.theme);
-		script.setAttribute('data-lang', giscusConfig.lang);
-		script.setAttribute('data-loading', giscusConfig.loading);
-		script.setAttribute('crossorigin', 'anonymous');
-		script.async = true;
-		document.getElementById('comment_box')?.appendChild(script);
-		const sendMessage = (message: Partial<typeof giscusConfig>) => {
-			const iframe = document.querySelector<HTMLIFrameElement>('iframe.giscus-frame');
-			if (!iframe) return;
-			iframe.contentWindow?.postMessage({ giscus: {setConfig: message} }, 'https://giscus.app');
-		}
-		window.addEventListener('theme-change', event => {
-			const { detail: theme } = event as CustomEvent;
-			const giscusTheme = theme === 'dark' ? 'transparent_dark' : 'light';
-			sendMessage({ theme: giscusTheme });
-		})
-	</script>
+	
 </ArticleLayout>

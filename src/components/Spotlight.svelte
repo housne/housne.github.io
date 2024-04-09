@@ -155,7 +155,7 @@ const NAVS  = [
         {#if !result}
           <div></div>
         {:else if result?.length === 0}
-          <div class="text-center text-gray-500 py-6 pb-4 text-sm">暂无搜索结果</div>
+          <div class="text-gray-500 p-3 text-sm">暂无搜索结果</div>
         {:else if result?.length > 0}
         <div class="pt-2">
           <span class="text-xs text-gray-500 mb-2 block px-3">文章</span>
