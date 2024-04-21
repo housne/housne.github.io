@@ -4,6 +4,7 @@ import { onMount, onDestroy, tick } from 'svelte'
 import SearchIcon from './icons/Search.svelte'
 import CloseIcon from './icons/Close.svelte'
 import clsx from 'clsx'
+import ThemeSwitcher from './ThemeSwitcher.svelte';
 
 type Article = {
   id: string
@@ -177,6 +178,9 @@ const NAVS  = [
             {/each}
           </div>
         </div>
+      </div>
+      <div class="flex p-2 border-t dark:border-gray-800 justify-end">
+        <ThemeSwitcher />
       </div>
     </div>
   </div>
