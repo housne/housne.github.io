@@ -25,7 +25,10 @@ const { title = SITE_TITLE, description = SITE_DESCRIPTION, image='/blog-placeho
 	<body class="text-gray-700 dark:bg-gray-900 dark:text-gray-300 antialiased">
 		<Header />
 		<main class="max-w-screen-sm px-4 pb-8 space-y-8 mx-auto">
-      <slot />
+			<h1 class="text-3xl mb-4">{frontmatter?.title || title}</h1>
+			<div class="prose dark:prose-invert">
+				<slot />
+			</div>
 		</main>
 	</body>
 </html>

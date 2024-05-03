@@ -123,11 +123,6 @@ const NAVS  = [
     link: "/about",
     label: "关于",
     icon: "💡",
-  },
-  {
-    link: "/contact",
-    label: "联系",
-    icon: "✉️",
   }
 ]
 

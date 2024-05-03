@@ -12,10 +12,6 @@ onMount(() => {
   window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', handleSystemThemeChange)
 })
 
-// onDestroy(() => {
-//   window.matchMedia('(prefers-color-scheme: dark)').removeEventListener('change', handleSystemThemeChange)
-// })
-
 const updateTheme = (theme: Theme.Dark | Theme.Light) => {
   if (theme === Theme.Dark) {
     document.documentElement.classList.add('dark')
@@ -79,10 +75,10 @@ const ThemeList = [
 
 </script>
 
-<div role="radiogroup" class="flex items-center justify-between rounded-full bg-gray-200 p-[3px] space-x-[3px] dark:bg-gray-800">
+<div role="radiogroup" class="flex items-center justify-between rounded-full bg-gray-100 p-[3px] space-x-[3px] dark:bg-gray-800">
     {#each ThemeList as item}
       <button
-        class={`p-1.5 rounded-full hover:bg-gray-50 dark:hover:bg-gray-700 ${theme === item.name ? 'bg-gray-50 dark:bg-gray-700' : ''}`}
+        class={`p-1.5 rounded-full hover:bg-white dark:hover:bg-gray-700 ${theme === item.name ? 'bg-white dark:bg-gray-700' : ''}`}
         on:click={() => setTheme(item.name)}
       >
         <svelte:component this={item.icon} />

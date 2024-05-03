@@ -1,17 +1,21 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro"
+import Contact from "../../components/Contact.astro"
 ---
 <BaseLayout title="关于">
   <div class="prose dark:prose-invert">
     <h1 class="text-3xl mb-6">关于</h1>
-    <p>网站由 <a href="https://www.nextjs.com/" target="_blank" rel="noreferrer noopenner nofollow">Next.js</a> 构建生成，自动构建和托管于 <a href="https://vercel.com/" target="_blank" rel="noreferrer noopenner nofollow">Vercel</a></p>
+    <p>网站由 <a href="https://astro.build/" target="_blank" rel="noreferrer noopenner nofollow">Astro</a> 构建生成，自动构建和托管于 <a href="https://cloudflare.com" target="_blank" rel="noreferrer noopenner nofollow">Cloudflare</a></p>
     <h3>版权</h3>
     <p>网站内容遵循 <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="noreferrer noopenner nofollow">署名 4.0 国际 (CC BY 4.0)</a></p>
     <h3>图标</h3>
     <ul>
-      <li><a href="https://icons.getbootstrap.com/" target="_blank" rel="noreferrer noopenner nofollow">bootstrap icons</a></li>
+      <li><a href="https://lucide.dev/" target="_blank" rel="noreferrer noopenner nofollow">Lucide</a></li>
       <li><a href="https://simpleicons.org/" target="_blank" rel="noreferrer noopenner nofollow">simple icons</a></li>
       <li><a href="https://ionicons.com/" target="_blank" rel="noreferrer noopenner nofollow">Ionicons 5</a></li>
     </ul>
+    <h3>联系</h3>
+    <p class="my-6">你可以通过以下社交平台联系到我</p>
+    <Contact />
   </div>
 </BaseLayout>
