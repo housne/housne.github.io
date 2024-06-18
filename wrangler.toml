@@ -1,0 +1,4 @@
+[[d1_databases]]
+binding = "DB" # available in your Worker on env.DB
+database_name = "yihao-dev"
+database_id = "558526d4-0ca5-435f-9711-275f5d6ae579"

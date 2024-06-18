@@ -6,6 +6,7 @@ import TimeAgo from '../../components/TimeAgo.astro';
 import Comment from '../../components/Comment.astro';
 import ArticleNav from '../../components/ArticleNav.astro';
 import ArticleTag from '../../components/ArticleTag.astro';
+import Comments from '../../components/comments/Comments.svelte';
 
 export async function getStaticPaths() {
 	const articles = await getArticles();
@@ -49,6 +50,8 @@ const { Content } = await article.render();
 	<ArticleTag tags={article.data.tags} />
 
 	<ArticleNav prev={prev} next={next} />
+
+	<Comments slug={article.slug} client:visible />
 
 	<div class="pt-4">
 		<Comment />
