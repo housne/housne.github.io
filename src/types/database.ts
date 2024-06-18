@@ -1,4 +1,4 @@
-import type {Generated } from 'kysely'
+import type { Generated, Selectable } from 'kysely'
 
 export interface Database {
   comments: CommentTable
@@ -20,3 +20,5 @@ export interface ReactionTable {
   post_slug: string
   type: number
 }
+
+export type Comment = Selectable<CommentTable> 
