@@ -1,5 +1,5 @@
 <script lang="ts">
-import { onMount, onDestroy } from 'svelte'
+import { onMount } from 'svelte'
 import { Theme } from '../types/theme'
 import Sun from './icons/Sun.svelte'
 import Moon from './icons/Moon.svelte'

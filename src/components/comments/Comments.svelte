@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { type Comment } from '../../types/database'
+  import type { Comment } from '@/types/comment'
   import CommentForm from './Form.svelte'
   import CommentList from './List.svelte'
 
@@ -7,7 +7,7 @@
   export let comments: Comment[] = []
 </script>
 
-<div>
+<div class="space-y-6">
   <CommentList {slug} {comments} />
   <CommentForm {slug} />
 </div>

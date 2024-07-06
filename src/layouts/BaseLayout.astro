@@ -22,7 +22,7 @@ const { title = SITE_TITLE, description = SITE_DESCRIPTION, image='/blog-placeho
 	<head>
 		<BaseHead title={frontmatter?.title || title} description={frontmatter?.description || description} image={image} />
 	</head>
-	<body class="text-gray-700 dark:bg-gray-900 dark:text-gray-300 antialiased">
+	<body class="antialiased">
 		<Header />
 		<main class="max-w-screen-sm px-4 pb-8 space-y-8 mx-auto">
       <slot />
